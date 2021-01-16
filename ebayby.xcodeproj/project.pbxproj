@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6E021C7825B38F3500D70F7C /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E021C7725B38F3500D70F7C /* InfoModel.swift */; };
 		6E021C7B25B395EC00D70F7C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E021C7A25B395EC00D70F7C /* ViewModel.swift */; };
+		6E021C7E25B39ACC00D70F7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E021C7D25B39ACC00D70F7C /* MainView.swift */; };
 		788039AD25B38CA3005E608E /* ebaybyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788039AC25B38CA3005E608E /* ebaybyApp.swift */; };
 		788039AF25B38CA3005E608E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788039AE25B38CA3005E608E /* ContentView.swift */; };
 		788039B125B38CA5005E608E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 788039B025B38CA5005E608E /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		6E021C7725B38F3500D70F7C /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		6E021C7A25B395EC00D70F7C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		6E021C7D25B39ACC00D70F7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		788039A925B38CA3005E608E /* ebayby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ebayby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		788039AC25B38CA3005E608E /* ebaybyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ebaybyApp.swift; sourceTree = "<group>"; };
 		788039AE25B38CA3005E608E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				788039B225B38CA5005E608E /* Preview Content */,
 				6E021C7725B38F3500D70F7C /* InfoModel.swift */,
 				6E021C7A25B395EC00D70F7C /* ViewModel.swift */,
+				6E021C7D25B39ACC00D70F7C /* MainView.swift */,
 			);
 			path = ebayby;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E021C7825B38F3500D70F7C /* InfoModel.swift in Sources */,
+				6E021C7E25B39ACC00D70F7C /* MainView.swift in Sources */,
 				788039B625B38CA5005E608E /* Persistence.swift in Sources */,
 				788039AF25B38CA3005E608E /* ContentView.swift in Sources */,
 				788039AD25B38CA3005E608E /* ebaybyApp.swift in Sources */,
