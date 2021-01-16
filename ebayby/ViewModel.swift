@@ -17,6 +17,7 @@ class ViewModel: ObservableObject {
     //Transistion Variables
     @Published var page = "login"
     @Published var currentOrderView = "Overview"
+    @Published var selectedHomeTab: HomeView.Tab = .home
     
     //User
     @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", BabiesInCart: [], BabiesOrdered: [])
