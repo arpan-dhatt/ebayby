@@ -142,6 +142,6 @@ struct BabyBasePreviewListView: View{
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(model: ViewModel()).environmentObject(ViewModel())
+        HomeView(model: ViewModel())
     }
 }
