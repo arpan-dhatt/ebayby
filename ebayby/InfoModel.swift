@@ -47,6 +47,10 @@ struct InfoModel{
     }
     struct User{
         var name: String
+        var SocialCredit: Float
+        var Location: String
+        var Bio: String
+        var ProfilePicture: UIImage
         var BabiesInCart: [Baby]
         var BabiesOrdered: [Order]
     }

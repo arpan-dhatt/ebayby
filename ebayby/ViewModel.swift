@@ -20,7 +20,7 @@ class ViewModel: ObservableObject {
     @Published var selectedHomeTab: HomeView.Tab = .forYou
     
     //User
-    @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", BabiesInCart: [], BabiesOrdered: [])
+    @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", SocialCredit: 1, Location: "Dallas", Bio: "El Presidente", ProfilePicture: UIImage(named: "Donlad")!, BabiesInCart: [], BabiesOrdered: [])
     
     
     //BabyBase Infortion
