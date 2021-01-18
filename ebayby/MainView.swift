@@ -13,35 +13,7 @@ struct MainView: View {
     var body: some View {
         VStack{
             if model.page == "home"{
-                VStack{
-                    Spacer()
-                    Text("Home")
-                    Spacer()
-                    VStack{
-                        
-                        Button(action: {
-                            self.model.page = "order"
-                        }){
-                            Text("Orders").font(.system(size: 24, weight: .light)).padding()
-                        }.frame(width: 225).background(Color.green).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
-                        
-                        
-                        Button(action: {
-                            self.model.page = "home"
-                        }){
-                            Text("Home").font(.system(size: 24, weight: .light)).padding()
-                        }.frame(width: 225).background(Color.green).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
-                        
-                        
-                        Button(action: {
-                            self.model.page = "login"
-                        }){
-                            Text("Login").font(.system(size: 24, weight: .light)).padding()
-                        }.frame(width: 225).background(Color.green).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
-                        
-                    }
-                    Spacer()
-                }
+                HomeView(model: self.model)
             }
             if model.page == "login"{
                 VStack{

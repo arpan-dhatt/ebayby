@@ -15,18 +15,21 @@ struct InfoModel{
         var ImageOfCeleb: UIImage
         var BasePrice: Float
         var Description: String
+        var id = UUID()
     }
     struct Article{
         var Title: String
         var Image: UIImage
         var Subtitle: String
         var Description: String
+        var id = UUID()
     }
     struct Accessory{
         var ImageOfAccessory: UIImage
         var Name: String
         var Price: Float
         var Description: String
+        var id = UUID()
     }
     struct Baby{
         var Base: BabyBase
@@ -38,12 +41,14 @@ struct InfoModel{
         var Traits: [String]
         var TotalPrice: Float
         var ProjectedIncome: Float
+        var id = UUID()
     }
     struct Order{
         var OrderedBaby: Baby
         var Financing: Financing
         var Status: Status
         var AdditionalAccessories: [Accessory]
+        var id = UUID()
     }
     struct User{
         var name: String
@@ -53,25 +58,23 @@ struct InfoModel{
         var ProfilePicture: UIImage
         var BabiesInCart: [Baby]
         var BabiesOrdered: [Order]
+        var id = UUID()
     }
     
     enum EyeColor{
-        case blue, black, white, brown, green
+        case blue, black, white, brown, green, ordering
     }
     
     enum SkinColor {
-        case white, brown, tan, black, red, blue
+        case white, brown, tan, black, red, blue, ordering
     }
     
     enum Financing {
-        case loan, credit, debit, cash
+        case loan, credit, debit, cash, ordering
     }
     
     enum Status {
-        case paid, none, partiallyPaid
+        case paid, none, partiallyPaid, ordering
     }
-    
-    
-    
     
 }
