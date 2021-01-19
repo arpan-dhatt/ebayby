@@ -11,13 +11,13 @@ class ViewModel: ObservableObject {
     @Published var model: InfoModel = InfoModel()
     
     //Constants
-    let PrimaryColor = Color.init(red: 238/255, green: 174/255, blue: 202/255)
-    let SecondaryColor = Color.init(red: 238/255, green: 174/255, blue: 202/255)
+    let PrimaryColor = Color.init(red: 66/255, green: 165/255, blue: 245/255)
+    let SecondaryColor = Color.init(red: 126/255, green: 87/255, blue: 194/255)
     
     //BabyBase Infortion
     @Published var AllBases: Array<InfoModel.BabyBase>  = [
         .init(NameOfCeleb: "Donnald", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald1", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
+        .init(NameOfCeleb: "Biden", ImageOfCeleb: UIImage(named: "Biden")!, BasePrice: 1, Description:"nulllll"),
         .init(NameOfCeleb: "Donnald2", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
         .init(NameOfCeleb: "Donnald3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
         .init(NameOfCeleb: "Donnald4", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),

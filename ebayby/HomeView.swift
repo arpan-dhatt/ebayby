@@ -83,7 +83,27 @@ struct ForYouView: View {
                                 }.frame(width: 100.0).background(Color.green).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
                                 Spacer()
                             }
-                        }.foregroundColor(.black).padding([.bottom, .top], 25)}
+                        }.foregroundColor(.black).padding([.bottom, .top], 25)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 0) {
+                                        ForEach(1..<10) { num in
+                                            VStack {
+                                                GeometryReader { geo in
+                                                    Text("Number \(num)")
+                                                        .font(.largeTitle)
+                                                    .padding()
+                                                    .background(Color.red)
+                                                    .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
+                                                }
+                                            }
+                                            .frame(width: 180, height: 300)
+                                        }
+                                    }
+                                    .padding()
+                                }
+                        
+                    }
                 }
             }.background(LinearGradient(gradient: Gradient(colors: [model.PrimaryColor,model.SecondaryColor,.white]), startPoint: .top, endPoint: .bottom)).navigationBarTitle(Text("Home"))
         }
@@ -97,28 +117,31 @@ struct BabyBasePreviewView: View {
     
     var body: some View{
         VStack{
-            HStack{
-                Image(uiImage: base.ImageOfCeleb).clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                VStack{
+
+            Image(uiImage: base.ImageOfCeleb).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit)
+            
+            VStack{
                     Spacer()
-                    Text("Base Of " + "\n" + base.NameOfCeleb).font(.headline)
+                    
+                    Text("Base Of " + base.NameOfCeleb).font(.headline)
                     
                     Text("$"+String(base.BasePrice)+"K+").font(.title)
                     Text(base.Description).font(.caption)
+                    
                     Spacer()
+                    
                     Button(action: {
                         model.currentBase = base
                         model.currentOrder.OrderedBaby.Base = base
                         model.page = "order"
                         model.currentOrderView = "Overview"
                     }){
-                        Text("Start Now").font(.system(size: 16, weight: .light))
-                    }.padding(7.5).background(model.PrimaryColor).cornerRadius(10.0).shadow(radius: 5.0).foregroundColor(Color.white)
+                        Text("Start Now").font(.system(size: 12, weight: .light))
+                    }.padding(15).background(model.PrimaryColor).cornerRadius(10.0).shadow(radius: 5.0).foregroundColor(Color.black)
+                    
                     Spacer()
-                }
-            }
-            
-        }.frame(width:UIScreen.main.bounds.size.width - 75, height:275).background(Color.white).cornerRadius(10.0).foregroundColor(.black).padding(.trailing, 15)
+            }.padding()
+        }.background(LinearGradient(gradient: Gradient(colors: [Color.init(red: 204/255, green: 204/255, blue: 178/255), Color.init(red: 117/255, green: 117/255, blue: 25/255)]), startPoint: .top, endPoint: .bottom)).cornerRadius(10.0).foregroundColor(.black).padding(.trailing, 15)
     }
 }
 
