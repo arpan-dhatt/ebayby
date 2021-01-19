@@ -25,7 +25,7 @@ struct HomeView: View {
                 Image(systemName: "list.bullet").font(.system(size: 28, weight:.ultraLight))
                 Text("Orders")
             }.tag(Tab.orders)
-
+            
         }
     }
 }
@@ -62,7 +62,7 @@ struct ForYouView: View {
                 ZStack{
                     VStack{
                         VStack {
-                            Text("Featured").font(.system(size: 36, weight: .light)).foregroundColor(Color.white)
+                            Text("Featured Babies").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
                             
                             ScrollView(.horizontal){
                                 VStack(alignment: .leading) {
@@ -79,27 +79,110 @@ struct ForYouView: View {
                                 Button(action: {
                                     self.selection = "basePreview"
                                 }){
-                                    Text("See All").font(.system(size: 16, weight: .light)).padding()
-                                }.frame(width: 100.0).background(Color.green).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
+                                    Text("See All Babies").font(.system(size: 36, weight: .light)).padding()
+                                }.frame(width: 300.0).background(model.TertiaryColor).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
                                 Spacer()
                             }
                         }.foregroundColor(.black).padding([.bottom, .top], 25)
                         
-                        ScrollView(.horizontal, showsIndicators: false){
-                            HStack(spacing: 0){
-                                ForEach(model.FeaturedArticles, id: \.id){ article in
+                        VStack{
+                            ZStack{
+                                Rectangle().fill(Color.pink).frame(width: 500,height: 125).rotationEffect(.degrees(-5))
+                                Text("Featured Articles").font(.system(size: 36, weight: .light)).foregroundColor(Color.white)
+                            }
+                            Spacer()
+                            
+                            ScrollView(.horizontal, showsIndicators: false){
+                                HStack(spacing: 0){
+                                    ForEach(model.FeaturedArticles, id: \.id){ article in
                                         GeometryReader {
                                             geo in
                                             ArticlePreviewView(model: self.model, article: article).rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
-                                        
-                                        }.frame(width: 270, height: 400)
+                                            
+                                        }.frame(width: 270, height: 350)
                                     }
+                                }
                             }
                         }
                         
+                        VStack {
+                            Text("Deals!").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
+                            
+                            ScrollView(.horizontal){
+                                VStack(alignment: .leading) {
+                                    HStack{
+                                        ForEach(model.DealBases, id: \.id){ babyBase in
+                                            BabyBasePreviewView(model: self.model, base: babyBase)
+                                        }
+                                    }.foregroundColor(.black)
+                                }
+                            }.padding().shadow(radius: 10.0)
+                            
+                        }.foregroundColor(.black).padding([ .bottom, .top], 25)
+                        
+                        VStack {
+                            Text("Exclusive Babies").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
+                            
+                            ScrollView(.horizontal){
+                                VStack(alignment: .leading) {
+                                    HStack{
+                                        ForEach(model.DealBases, id: \.id){ babyBase in
+                                            BabyBasePreviewView(model: self.model, base: babyBase)
+                                        }
+                                    }.foregroundColor(.black)
+                                }
+                            }.padding().shadow(radius: 10.0)
+                            
+                        }.foregroundColor(.black).padding([.bottom], 25)
+                        
+                        VStack {
+                            Text("Cheapest Babies").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
+                            
+                            ScrollView(.horizontal){
+                                VStack(alignment: .leading) {
+                                    HStack{
+                                        ForEach(model.CheapBases, id: \.id){ babyBase in
+                                            BabyBasePreviewView(model: self.model, base: babyBase)
+                                        }
+                                    }.foregroundColor(.black)
+                                }
+                            }.padding().shadow(radius: 10.0)
+                            
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    self.selection = "basePreview"
+                                }){
+                                    Text("See All Babies").font(.system(size: 36, weight: .light)).padding()
+                                }.frame(width: 300.0).background(model.TertiaryColor).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
+                                Spacer()
+                            }
+                        }.foregroundColor(.black).padding([.bottom], 25)
+                        
+                        VStack{
+                            ZStack{
+                                Rectangle().fill(Color.pink).frame(width: 500,height: 125).rotationEffect(.degrees(5))
+                                Text("Top Tenz").font(.system(size: 36, weight: .light)).foregroundColor(Color.white)
+                            }
+                            Spacer()
+                            
+                            ScrollView(.horizontal, showsIndicators: false){
+                                HStack(spacing: 0){
+                                    ForEach(model.TopTens, id: \.id){ article in
+                                        GeometryReader {
+                                            geo in
+                                            ArticlePreviewView(model: self.model, article: article).rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
+                                            
+                                        }.frame(width: 270, height: 350)
+                                    }
+                                }
+                            }
+                        }
+                        
+                        
                     }
                 }
-            }.background(LinearGradient(gradient: Gradient(colors: [model.PrimaryColor,model.SecondaryColor,.white]), startPoint: .top, endPoint: .bottom)).navigationBarTitle(Text("Home"))
+            }.background(LinearGradient(gradient: Gradient(colors: [.white,.white]), startPoint: .top, endPoint: .bottom)).navigationBarTitle(Text("Home"))
         }
         
     }
@@ -111,31 +194,31 @@ struct BabyBasePreviewView: View {
     
     var body: some View{
         VStack{
-
+            
             Image(uiImage: base.ImageOfCeleb).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit)
             
             VStack{
-                    Spacer()
-                    
-                    Text("Base Of " + base.NameOfCeleb).font(.headline)
-                    
-                    Text("$"+String(base.BasePrice)+"K+").font(.title)
-                    Text(base.Description).font(.caption)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        model.currentBase = base
-                        model.currentOrder.OrderedBaby.Base = base
-                        model.page = "order"
-                        model.currentOrderView = "Overview"
-                    }){
-                        Text("Start Now").font(.system(size: 12, weight: .light))
-                    }.padding(15).background(model.PrimaryColor).cornerRadius(10.0).shadow(radius: 5.0).foregroundColor(Color.black)
-                    
-                    Spacer()
+                Spacer()
+                
+                Text("Base Of " + base.NameOfCeleb).font(.headline)
+                
+                Text("$"+String(base.BasePrice)+"K+").font(.title)
+                Text(base.Description).font(.caption)
+                
+                Spacer()
+                
+                Button(action: {
+                    model.currentBase = base
+                    model.currentOrder.OrderedBaby.Base = base
+                    model.page = "order"
+                    model.currentOrderView = "Overview"
+                }){
+                    Text("Start Now").font(.system(size: 12, weight: .light))
+                }.padding(15).background(model.PrimaryColor).cornerRadius(10.0).shadow(radius: 5.0).foregroundColor(Color.white)
+                
+                Spacer()
             }.padding()
-        }.background(LinearGradient(gradient: Gradient(colors: [Color.init(red: 204/255, green: 204/255, blue: 178/255), Color.init(red: 117/255, green: 117/255, blue: 25/255)]), startPoint: .top, endPoint: .bottom)).cornerRadius(10.0).foregroundColor(.black).padding(.trailing, 15)
+        }.background(model.SecondaryColor).cornerRadius(10.0).foregroundColor(.white).padding(.trailing, 15)
     }
 }
 
@@ -145,22 +228,16 @@ struct ArticlePreviewView: View {
     
     var body: some View{
         VStack{
-            ZStack(alignment: .bottomLeading){
-            Image(uiImage: article.Image).resizable().frame(width:260, height: 250).aspectRatio(contentMode: .fit)
-           
-            HStack{
-                Text(article.Title).font(.headline)
-                Spacer()
-                    Button(action: {
-                        
-                    }){
-                        Text("Read More").font(.system(size: 12, weight: .light))
-                    }.padding(15).background(model.PrimaryColor).cornerRadius(10.0).shadow(radius: 5.0).foregroundColor(Color.black)
-
-            }.padding().background(Color.white.opacity(0.3))
+            ZStack(alignment: .bottom){
+                Image(uiImage: article.Image).resizable().frame(width:260, height: 350).aspectRatio(contentMode: .fit).cornerRadius(10.0).onTapGesture(){
+                    model.page = "order"
+                }
+                VStack{
+                    Text(article.Title).font(.headline)
+                    Text(article.Subtitle)
+                }.padding().frame(width:260).background(model.PrimaryColor.opacity(0.75))
             }
-            Text(article.Description).font(.caption).padding()
-        }.background(LinearGradient(gradient: Gradient(colors: [Color.init(red: 204/255, green: 204/255, blue: 178/255), Color.init(red: 117/255, green: 117/255, blue: 25/255)]), startPoint: .top, endPoint: .bottom)).cornerRadius(10.0).foregroundColor(.black).padding(.trailing, 15)
+        }.cornerRadius(10.0).foregroundColor(.white).padding(.trailing, 15)
     }
 }
 
