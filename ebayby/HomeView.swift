@@ -17,7 +17,7 @@ struct HomeView: View {
                 Image(systemName: "plus").font(.system(size: 28, weight:.ultraLight))
                 Text("For You")
             }.tag(Tab.forYou)
-            testView(model: self.model).tabItem {
+            ProfileView(model: self.model).tabItem {
                 Image(systemName: "house").font(.system(size: 28, weight:.ultraLight))
                 Text("Profile")
             }.tag(Tab.profile)
@@ -85,23 +85,17 @@ struct ForYouView: View {
                             }
                         }.foregroundColor(.black).padding([.bottom, .top], 25)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 0) {
-                                        ForEach(1..<10) { num in
-                                            VStack {
-                                                GeometryReader { geo in
-                                                    Text("Number \(num)")
-                                                        .font(.largeTitle)
-                                                    .padding()
-                                                    .background(Color.red)
-                                                    .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
-                                                }
-                                            }
-                                            .frame(width: 180, height: 300)
-                                        }
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack(spacing: 0){
+                                ForEach(model.FeaturedArticles, id: \.id){ article in
+                                        GeometryReader {
+                                            geo in
+                                            ArticlePreviewView(model: self.model, article: article).rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
+                                        
+                                        }.frame(width: 270, height: 400)
                                     }
-                                    .padding()
-                                }
+                            }
+                        }
                         
                     }
                 }
@@ -141,6 +135,31 @@ struct BabyBasePreviewView: View {
                     
                     Spacer()
             }.padding()
+        }.background(LinearGradient(gradient: Gradient(colors: [Color.init(red: 204/255, green: 204/255, blue: 178/255), Color.init(red: 117/255, green: 117/255, blue: 25/255)]), startPoint: .top, endPoint: .bottom)).cornerRadius(10.0).foregroundColor(.black).padding(.trailing, 15)
+    }
+}
+
+struct ArticlePreviewView: View {
+    @ObservedObject var model: ViewModel
+    var article: InfoModel.Article
+    
+    var body: some View{
+        VStack{
+            ZStack(alignment: .bottomLeading){
+            Image(uiImage: article.Image).resizable().frame(width:260, height: 250).aspectRatio(contentMode: .fit)
+           
+            HStack{
+                Text(article.Title).font(.headline)
+                Spacer()
+                    Button(action: {
+                        
+                    }){
+                        Text("Read More").font(.system(size: 12, weight: .light))
+                    }.padding(15).background(model.PrimaryColor).cornerRadius(10.0).shadow(radius: 5.0).foregroundColor(Color.black)
+
+            }.padding().background(Color.white.opacity(0.3))
+            }
+            Text(article.Description).font(.caption).padding()
         }.background(LinearGradient(gradient: Gradient(colors: [Color.init(red: 204/255, green: 204/255, blue: 178/255), Color.init(red: 117/255, green: 117/255, blue: 25/255)]), startPoint: .top, endPoint: .bottom)).cornerRadius(10.0).foregroundColor(.black).padding(.trailing, 15)
     }
 }
