@@ -25,7 +25,7 @@ struct ProfileView: View {
                     Divider()
                 }
                 Text("Social Credit: \(Int(model.user.SocialCredit))/100")
-                Image(uiImage: model.user.ProfilePicture).clipShape(Circle()).shadow(radius: 10)
+                Image(uiImage: model.user.ProfilePicture).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit).clipShape(Circle()).shadow(radius: 10).padding()
                 HStack {
                     Text("Location")
                         .font(.caption)
