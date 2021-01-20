@@ -61,128 +61,18 @@ struct ForYouView: View {
                 
                 ZStack{
                     VStack{
-                        VStack {
-                            Text("Featured Babies").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
-                            
-                            ScrollView(.horizontal){
-                                VStack(alignment: .leading) {
-                                    HStack{
-                                        ForEach(model.AllBases, id: \.id){ babyBase in
-                                            BabyBasePreviewView(model: self.model, base: babyBase)
-                                        }
-                                    }.foregroundColor(.black)
-                                }
-                            }.padding().shadow(radius: 10.0)
-                            
-                            HStack {
-                                Spacer()
-                                Button(action: {
-                                    self.selection = "basePreview"
-                                }){
-                                    Text("See All Babies").font(.system(size: 36, weight: .light)).padding()
-                                }.frame(width: 300.0).background(model.TertiaryColor).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
-                                Spacer()
-                            }
-                        }.foregroundColor(.black).padding([.bottom, .top], 25)
+                        BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Featured Babies", baseList: model.AllBases)
                         
-                        VStack{
-                            ZStack{
-                                Rectangle().fill(Color.pink).frame(width: 500,height: 125).rotationEffect(.degrees(-5))
-                                Text("Featured Articles").font(.system(size: 36, weight: .light)).foregroundColor(Color.white)
-                            }
-                            Spacer()
-                            
-                            ScrollView(.horizontal, showsIndicators: false){
-                                HStack(spacing: 0){
-                                    ForEach(model.FeaturedArticles, id: \.id){ article in
-                                        GeometryReader {
-                                            geo in
-                                            ArticlePreviewView(model: self.model, article: article).rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
-                                            
-                                        }.frame(width: 270, height: 350)
-                                    }
-                                }
-                            }
-                        }
+                        ArticlePreviewHomePageView(model: model, title: "Featured Articles", articleList: model.FeaturedArticles)
                         
-                        VStack {
-                            Text("Deals!").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
-                            
-                            ScrollView(.horizontal){
-                                VStack(alignment: .leading) {
-                                    HStack{
-                                        ForEach(model.DealBases, id: \.id){ babyBase in
-                                            BabyBasePreviewView(model: self.model, base: babyBase)
-                                        }
-                                    }.foregroundColor(.black)
-                                }
-                            }.padding().shadow(radius: 10.0)
-                            
-                        }.foregroundColor(.black).padding([ .bottom, .top], 25)
+                        BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Deals!", baseList: model.DealBases)
                         
-                        VStack {
-                            Text("Exclusive Babies").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
-                            
-                            ScrollView(.horizontal){
-                                VStack(alignment: .leading) {
-                                    HStack{
-                                        ForEach(model.DealBases, id: \.id){ babyBase in
-                                            BabyBasePreviewView(model: self.model, base: babyBase)
-                                        }
-                                    }.foregroundColor(.black)
-                                }
-                            }.padding().shadow(radius: 10.0)
-                            
-                        }.foregroundColor(.black).padding([.bottom], 25)
+                        BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Exclusive Babies", baseList: model.DealBases)
                         
-                        VStack {
-                            Text("Cheapest Babies").font(.system(size: 48, weight: .bold)).foregroundColor(Color.black)
-                            
-                            ScrollView(.horizontal){
-                                VStack(alignment: .leading) {
-                                    HStack{
-                                        ForEach(model.CheapBases, id: \.id){ babyBase in
-                                            BabyBasePreviewView(model: self.model, base: babyBase)
-                                        }
-                                    }.foregroundColor(.black)
-                                }
-                            }.padding().shadow(radius: 10.0)
-                            
-                            HStack {
-                                Spacer()
-                                Button(action: {
-                                    self.selection = "basePreview"
-                                }){
-                                    Text("See All Babies").font(.system(size: 36, weight: .light)).padding()
-                                }.frame(width: 300.0).background(model.TertiaryColor).cornerRadius(10.0).shadow(radius: 10.0).foregroundColor(Color.white)
-                                Spacer()
-                            }
-                        }.foregroundColor(.black).padding([.bottom], 25)
-                        
-                        VStack{
-                            ZStack{
-                                Rectangle().fill(Color.pink).frame(width: 500,height: 125).rotationEffect(.degrees(5))
-                                Text("Top Tenz").font(.system(size: 36, weight: .light)).foregroundColor(Color.white)
-                            }
-                            Spacer()
-                            
-                            ScrollView(.horizontal, showsIndicators: false){
-                                HStack(spacing: 0){
-                                    ForEach(model.TopTens, id: \.id){ article in
-                                        GeometryReader {
-                                            geo in
-                                            ArticlePreviewView(model: self.model, article: article).rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 8), axis: (x: 0, y: 1, z: 0))
-                                            
-                                        }.frame(width: 270, height: 350)
-                                    }
-                                }
-                            }
-                        }
-                        
-                        
+                        BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Cheap Babies", baseList: model.CheapBases)
                     }
                 }
-            }.background(LinearGradient(gradient: Gradient(colors: [.white,.white]), startPoint: .top, endPoint: .bottom)).navigationBarTitle(Text("Home"))
+            }.navigationBarTitle(Text("Home"))
         }
         
     }
@@ -197,28 +87,85 @@ struct BabyBasePreviewView: View {
             
             Image(uiImage: base.ImageOfCeleb).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit)
             
-            VStack{
-                Spacer()
-                
-                Text("Base Of " + base.NameOfCeleb).font(.headline)
-                
-                Text("$"+String(base.BasePrice)+"K+").font(.title)
-                Text(base.Description).font(.caption)
+            Button(action: {
+                model.currentBase = base
+                model.currentOrder.OrderedBaby.Base = base
+                model.page = "order"
+                model.currentOrderView = "Overview"
+            }) {
+                VStack{
+                    
+                    Text("Base Of " + base.NameOfCeleb).font(.title)
+                    Text("$"+String(base.BasePrice)+"K+").font(.subheadline)
+                    
+                    Spacer()
+                }.padding()
+            }
+            
+        }.background(Color.init(.lightGray)).cornerRadius(10.0).foregroundColor(.white)
+    }
+}
+
+struct BabyBasePreviewHomePageView : View {
+    @ObservedObject var model: ViewModel
+    @Binding var selection : String?
+    
+    @State var title: String
+    
+    @State var baseList: Array<InfoModel.BabyBase>
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text(title).font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).multilineTextAlignment(.leading)
                 
                 Spacer()
                 
                 Button(action: {
-                    model.currentBase = base
-                    model.currentOrder.OrderedBaby.Base = base
-                    model.page = "order"
-                    model.currentOrderView = "Overview"
+                    self.selection = "basePreview"
                 }){
-                    Text("Start Now").font(.system(size: 12, weight: .light))
-                }.padding(15).background(model.PrimaryColor).cornerRadius(10.0).shadow(radius: 5.0).foregroundColor(Color.white)
+                    Text("See All Babies").foregroundColor(model.PrimaryColor).multilineTextAlignment(.trailing)
+                }
+            }.padding([.leading, .trailing], 15)
+            
+            
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack(spacing: 15.0){
+                    ForEach(baseList, id: \.id){ babyBase in
+                        BabyBasePreviewView(model: self.model, base: babyBase)
+                    }
+                }.padding(.leading)
+            }.shadow(radius: 10.0)
+        }.foregroundColor(.black).padding([.bottom, .top], 25)
+        Divider()
+
+    }
+    
+}
+
+struct ArticlePreviewHomePageView : View {
+    @ObservedObject var model: ViewModel
+    
+    @State var title: String
+    @State var articleList: Array<InfoModel.Article>
+    
+    var body: some View {
+        VStack{
+            HStack {
+                Text(title).font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).multilineTextAlignment(.leading)
                 
                 Spacer()
-            }.padding()
-        }.background(model.SecondaryColor).cornerRadius(10.0).foregroundColor(.white).padding(.trailing, 15)
+            }.padding([.leading, .trailing], 15)
+            
+            ScrollView(.horizontal, showsIndicators: false){
+                HStack (spacing: 15.0) {
+                    ForEach(articleList, id: \.id){ article in
+                        ArticlePreviewView(model: self.model, article: article)
+                    }
+                }.padding(.leading)
+            }
+        }
+        Divider()
     }
 }
 
@@ -232,12 +179,13 @@ struct ArticlePreviewView: View {
                 Image(uiImage: article.Image).resizable().frame(width:260, height: 350).aspectRatio(contentMode: .fit).cornerRadius(10.0).onTapGesture(){
                     model.page = "order"
                 }
+                
                 VStack{
                     Text(article.Title).font(.headline)
                     Text(article.Subtitle)
                 }.padding().frame(width:260).background(model.PrimaryColor.opacity(0.75))
             }
-        }.cornerRadius(10.0).foregroundColor(.white).padding(.trailing, 15)
+        }.cornerRadius(10.0).foregroundColor(.white)
     }
 }
 
@@ -249,12 +197,12 @@ struct BabyBasePreviewListView: View{
         
         ScrollView(.vertical){
             VStack(alignment: .leading) {
-                VStack{
+                VStack(spacing:15){
                     ForEach(model.AllBases, id: \.id){ babyBase in
-                        BabyBasePreviewView(model: self.model, base: babyBase).padding(.bottom, 50)
+                        BabyBasePreviewView(model: self.model, base: babyBase)
                     }
                 }.foregroundColor(.black)
-            }.padding().shadow(radius: 10.0).foregroundColor(.black).padding([.bottom, .top], 25)
+            }.shadow(radius: 10.0).foregroundColor(.black).padding([.bottom, .top], 25)
         }
     }
 }
