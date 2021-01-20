@@ -81,11 +81,13 @@ struct ForYouView: View {
 struct BabyBasePreviewView: View {
     @ObservedObject var model: ViewModel
     var base: InfoModel.BabyBase
+    var size: CGFloat
+    var showBio: Bool
     
     var body: some View{
         VStack{
             
-            Image(uiImage: base.ImageOfCeleb).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit)
+            Image(uiImage: base.ImageOfCeleb).resizable().frame(width:size, height: size).aspectRatio(contentMode: .fit)
             
             Button(action: {
                 model.currentBase = base
@@ -97,7 +99,9 @@ struct BabyBasePreviewView: View {
                     
                     Text("Base Of " + base.NameOfCeleb).font(.title)
                     Text("$"+String(base.BasePrice)+"K+").font(.subheadline)
-                    
+                    if showBio {
+                        Text(base.Description)
+                    }
                     Spacer()
                 }.padding()
             }
@@ -132,9 +136,9 @@ struct BabyBasePreviewHomePageView : View {
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 15.0){
                     ForEach(baseList, id: \.id){ babyBase in
-                        BabyBasePreviewView(model: self.model, base: babyBase)
+                        BabyBasePreviewView(model: self.model, base: babyBase, size: 250, showBio: false)
                     }
-                }.padding(.leading)
+                }.padding([.leading, .trailing])
             }.shadow(radius: 10.0)
         }.foregroundColor(.black).padding([.bottom, .top], 25)
         Divider()
@@ -157,14 +161,13 @@ struct ArticlePreviewHomePageView : View {
                 Spacer()
             }.padding([.leading, .trailing], 15)
             
-            ScrollView(.horizontal, showsIndicators: false){
-                HStack (spacing: 15.0) {
+            TabView {
+                
                     ForEach(articleList, id: \.id){ article in
                         ArticlePreviewView(model: self.model, article: article)
                     }
-                }.padding(.leading)
-            }
-        }
+            }.frame(width: UIScreen.main.bounds.width, height: 350).tabViewStyle(PageTabViewStyle()).shadow(radius: 10.0)
+        }.foregroundColor(.black).padding([.bottom, .top], 25)
         Divider()
     }
 }
@@ -172,20 +175,35 @@ struct ArticlePreviewHomePageView : View {
 struct ArticlePreviewView: View {
     @ObservedObject var model: ViewModel
     var article: InfoModel.Article
+    @State var showArticle : Bool = false
     
     var body: some View{
         VStack{
-            ZStack(alignment: .bottom){
-                Image(uiImage: article.Image).resizable().frame(width:260, height: 350).aspectRatio(contentMode: .fit).cornerRadius(10.0).onTapGesture(){
+            ZStack{
+                
+                Image(uiImage: article.Image).resizable().aspectRatio(contentMode: .fill).cornerRadius(10.0).onTapGesture(){
                     model.page = "order"
                 }
                 
                 VStack{
-                    Text(article.Title).font(.headline)
-                    Text(article.Subtitle)
-                }.padding().frame(width:260).background(model.PrimaryColor.opacity(0.75))
+                    HStack {
+                        Text(article.Subtitle).font(.subheadline).fontWeight(.bold)
+                        Spacer()
+                    }
+                    HStack {
+                        Text(article.Title).font(.system(size: 38, weight: .bold))
+                        Spacer()
+                    }
+                    Spacer()
+                }.padding(.top, 55).padding(.leading, 15)
+            }.frame(width:UIScreen.main.bounds.width-30, height: 350).onTapGesture {
+                showArticle.toggle()
             }
-        }.cornerRadius(10.0).foregroundColor(.white)
+        }.cornerRadius(10.0).foregroundColor(.white).sheet(isPresented: $showArticle, content: {
+            ArticleSheetView(showSheetView: $showArticle, title: article.Title, image: article.Image, subtitle: article.Subtitle, text: article.Subtitle)
+        }).contentShape(Rectangle()).onTapGesture {
+            showArticle.toggle()
+        }
     }
 }
 
@@ -199,11 +217,11 @@ struct BabyBasePreviewListView: View{
             VStack(alignment: .leading) {
                 VStack(spacing:15){
                     ForEach(model.AllBases, id: \.id){ babyBase in
-                        BabyBasePreviewView(model: self.model, base: babyBase)
+                        BabyBasePreviewView(model: self.model, base: babyBase, size: UIScreen.main.bounds.width-30, showBio: true)
                     }
                 }.foregroundColor(.black)
-            }.shadow(radius: 10.0).foregroundColor(.black).padding([.bottom, .top], 25)
-        }
+            }.shadow(radius: 10.0).foregroundColor(.black)
+        }.navigationBarTitle("All Babies")
     }
 }
 
