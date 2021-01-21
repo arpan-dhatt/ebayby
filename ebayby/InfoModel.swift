@@ -77,7 +77,7 @@ struct InfoModel{
     }
     
     enum Status: String {
-        case paid, none, partiallyPaid, ordering
+        case paid, none, partiallyPaid, ordering, delivery
     }
     
 }

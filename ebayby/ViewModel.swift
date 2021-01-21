@@ -82,6 +82,11 @@ class ViewModel: ObservableObject {
     @Published var selectedHomeTab: HomeView.Tab = .forYou
     @Published var currentOrder: InfoModel.Order = InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "Error"), IQ: 0, EyeColor: .ordering, SkinColor: .ordering, Height: 0, Thiccnes: 0, Traits: [], TotalPrice: 0, ProjectedIncome: 0), Financing: .ordering, Status: .ordering, AdditionalAccessories: [])
     @Published var currentBase: InfoModel.BabyBase = InfoModel.BabyBase.init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "error")
+    @Published var allOrders: Array<InfoModel.Order> = [
+        InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .cash, Status: .delivery, AdditionalAccessories: []),
+        InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan2", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0.1"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .credit, Status: .paid, AdditionalAccessories: []),
+        InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0.01"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .loan, Status: .ordering, AdditionalAccessories: [])
+    ]
     
     //User
     @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", SocialCredit: 1, Location: "Dallas", Bio: "El Presidente", ProfilePicture: UIImage(named: "Donlad")!, BabiesInCart: [], BabiesOrdered: [])
