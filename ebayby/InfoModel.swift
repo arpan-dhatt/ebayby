@@ -61,19 +61,22 @@ struct InfoModel{
         var id = UUID()
     }
     
-    enum EyeColor{
-        case blue, black, white, brown, green, ordering
+    enum EyeColor: String {
+        case blue = "blue", black = "black", gold = "gold", brown = "brown", green = "green", purple = "purple", ordering = "ordering"
+        var description: String {
+            return self.rawValue
+        }
     }
     
-    enum SkinColor {
+    enum SkinColor: String {
         case white, brown, tan, black, red, blue, ordering
     }
     
-    enum Financing {
+    enum Financing: String {
         case loan, credit, debit, cash, ordering
     }
     
-    enum Status {
+    enum Status: String {
         case paid, none, partiallyPaid, ordering
     }
     
