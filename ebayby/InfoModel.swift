@@ -33,7 +33,7 @@ struct InfoModel{
     }
     struct Baby{
         var Base: BabyBase
-        var IQ: Int
+        var IQ: Float
         var EyeColor: EyeColor
         var SkinColor: SkinColor
         var Height: Float

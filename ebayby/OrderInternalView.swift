@@ -44,8 +44,8 @@ struct OrderInternalView: View {
                             Spacer()
                             Image(systemName: "paintbrush").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
                         }
-                        Slider(value: $model.currentOrder.OrderedBaby.Height, in: 50...180, step: 1).padding().shadow(radius: 2.5)
-                        Text(String(model.currentOrder.OrderedBaby.Height)).font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
+                        Slider(value: $model.currentOrder.OrderedBaby.IQ, in: 50...180, step: 1).padding().shadow(radius: 2.5)
+                        Text(String(model.currentOrder.OrderedBaby.IQ)).font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
                     }
                 VStack{
                     HStack{

@@ -70,7 +70,7 @@ class ViewModel: ObservableObject {
     @Published var page = "home"
     @Published var currentOrderView = "Preview"
     @Published var selectedHomeTab: HomeView.Tab = .forYou
-    @Published var currentOrder: InfoModel.Order = InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "Error"), IQ: 0, EyeColor: .ordering, SkinColor: .ordering, Height: 0, Thiccnes: 0, Traits: [], TotalPrice: 0, ProjectedIncome: 0), Financing: .ordering, Status: .ordering, AdditionalAccessories: [])
+    @Published var currentOrder: InfoModel.Order = InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "Error"), IQ: 80, EyeColor: .ordering, SkinColor: .ordering, Height: 150, Thiccnes: 0, Traits: [], TotalPrice: 0, ProjectedIncome: 0), Financing: .ordering, Status: .ordering, AdditionalAccessories: [])
     @Published var currentBase: InfoModel.BabyBase = InfoModel.BabyBase.init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "error")
     @Published var allOrders: Array<InfoModel.Order> = [
         InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .cash, Status: .delivery, AdditionalAccessories: []),

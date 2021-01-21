@@ -22,7 +22,7 @@ struct OrderView: View {
             OrderInternalView(model: model, orderspace: orderspace)
         }
         if model.currentOrderView == "Overview"{
-            OrderPreviewView(model: model, orderspace: orderspace)
+            OrderOverviewView(model: model, orderspace: orderspace)
         }
     }
 }
