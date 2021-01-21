@@ -81,8 +81,9 @@ struct OrderPhysicalView: View{
     var body: some View {
         
         ZStack{
+            ScrollView{
             VStack(alignment: .center){
-                ScrollView{
+               
                 Spacer()
                 Text(String(model.currentOrder.OrderedBaby.Base.NameOfCeleb)).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 VStack{
@@ -99,9 +100,8 @@ struct OrderPhysicalView: View{
                             Spacer()
                             Image(systemName: "ruler").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
                         }
-                        Stepper(value: $model.currentOrder.OrderedBaby.Height, in: 100...200, label: {
-                            Text("current height")
-                        }).padding().shadow(radius: 2.5)
+                        Slider(value: $model.currentOrder.OrderedBaby.Height, in: 100...200, step: 1).padding().shadow(radius: 2.5)
+                        Text(String(model.currentOrder.OrderedBaby.Height)+" cm").font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
                     }
                 VStack{
                     HStack{
@@ -179,10 +179,25 @@ struct OrderPhysicalView: View{
                         }
                         Spacer()
                     }
-                    Divider()
+                    
                     
                 }
+                VStack{
+                    HStack{
+                        VStack{
+                        Text("Thiccness").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black)
+                            Text("33% is Average")
+                        }.padding()
+                        Spacer()
+                        Image(systemName: "ruler").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
+                    }
+
+                    Slider(value: $model.currentOrder.OrderedBaby.Thiccnes, in: 0...100, step: 1).padding().shadow(radius: 2.5)
+                    Text(String(model.currentOrder.OrderedBaby.Thiccnes)+"%").font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
+                }
+                Divider()
                 Spacer()
+               
                 }
                 HStack{
                     HStack {
