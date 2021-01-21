@@ -21,7 +21,7 @@ struct HomeView: View {
                 Image(systemName: "house").font(.system(size: 28, weight:.ultraLight))
                 Text("Profile")
             }.tag(Tab.profile)
-            testView(model: self.model).tabItem {
+            OrderPortal(model: self.model).tabItem {
                 Image(systemName: "list.bullet").font(.system(size: 28, weight:.ultraLight))
                 Text("Orders")
             }.tag(Tab.orders)
@@ -85,28 +85,27 @@ struct BabyBasePreviewView: View {
     var showBio: Bool
     
     var body: some View{
-        VStack{
+        ZStack{
             
             Image(uiImage: base.ImageOfCeleb).resizable().frame(width:size, height: size).aspectRatio(contentMode: .fit)
-            
-            Button(action: {
-                model.currentBase = base
-                model.currentOrder.OrderedBaby.Base = base
-                model.page = "order"
-                model.currentOrderView = "Overview"
-            }) {
-                VStack{
-                    
+            VStack{
+                Spacer()
+                VisualEffectView(effect: UIBlurEffect(style: .regular)).frame(width: size, height: size/3, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }
+            VStack{
+                Spacer()
                     Text("Base Of " + base.NameOfCeleb).font(.title)
-                    Text("$"+String(base.BasePrice)+"K+").font(.subheadline)
+                Text("$"+String(base.BasePrice)+"K+").font(.subheadline)
                     if showBio {
                         Text(base.Description)
                     }
-                    Spacer()
-                }.padding()
-            }
-            
-        }.background(Color.init(.lightGray)).cornerRadius(10.0).foregroundColor(.white)
+            }.padding()
+        }.cornerRadius(10.0).foregroundColor(.white).onTapGesture {
+            model.currentBase = base
+            model.currentOrder.OrderedBaby.Base = base
+            model.page = "order"
+            model.currentOrderView = "Overview"
+        }
     }
 }
 
@@ -221,6 +220,12 @@ struct BabyBasePreviewListView: View{
             }.shadow(radius: 10.0).foregroundColor(.black)
         }.navigationBarTitle("All Babies")
     }
+}
+
+struct VisualEffectView: UIViewRepresentable {
+    var effect: UIVisualEffect?
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
+    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
 }
 
 struct HomeView_Previews: PreviewProvider {
