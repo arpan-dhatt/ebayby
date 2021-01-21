@@ -99,7 +99,7 @@ struct OrderPhysicalView: View{
                             Spacer()
                             Image(systemName: "ruler").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
                         }
-                        Stepper(value: $model.currentOrder.OrderedBaby.Height, in 100...200, label: {
+                        Stepper(value: $model.currentOrder.OrderedBaby.Height, in: 100...200, label: {
                             Text("current height")
                         }).padding().shadow(radius: 2.5)
                     }
