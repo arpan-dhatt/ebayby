@@ -15,33 +15,24 @@ struct ArticleSheetView: View {
     @State var text: String
     
     var body: some View {
-        NavigationView {
-            ScrollView(.vertical) {
-                VStack {
-                    Image(uiImage: image).resizable().aspectRatio(contentMode: .fit)
-                    HStack {
-                        Text(title).multilineTextAlignment(.leading).font(.system(size: 38, weight: .bold)).shadow(color: .gray, radius:15, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-                        Spacer()
-                    }.padding(.leading)
-                    HStack {
-                        Text(subtitle).multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/).font(.subheadline).shadow(radius: 5)
-                        Spacer()
-                    }.padding(.leading).shadow(radius: 15)
-                    Text(text)
-                        .multilineTextAlignment(.leading)
-                        .font(.caption)
-                        .padding(.all)
+        ScrollView(.vertical) {
+            VStack {
+                Image(uiImage: image).resizable().aspectRatio(contentMode: .fit)
+                HStack {
+                    Text(title).multilineTextAlignment(.leading).font(.system(size: 38, weight: .bold)).shadow(color: .gray, radius:15, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                     Spacer()
-                }
-            }.navigationBarTitle(
-                Text(title), displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                self.showSheetView = false
-            }) {
-                Text("Done").bold()
-            })
+                }.padding(.leading)
+                HStack {
+                    Text(subtitle).multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/).font(.subheadline).shadow(radius: 5)
+                    Spacer()
+                }.padding(.leading).shadow(radius: 15)
+                Text(text)
+                    .multilineTextAlignment(.leading)
+                    .font(.caption)
+                    .padding(.all)
+                Spacer()
+            }
         }
-
     }
 }
 
