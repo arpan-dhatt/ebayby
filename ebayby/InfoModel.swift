@@ -62,7 +62,13 @@ struct InfoModel{
     }
     
     enum EyeColor: String {
-        case blue = "blue", black = "black", gold = "gold", brown = "brown", green = "green", purple = "purple", ordering = "ordering"
+        case blue = "Blue"
+        case black = "Black"
+        case gold = "Gold"
+        case brown = "Brown"
+        case green = "Green"
+        case purple = "Purple"
+        case ordering = "Ordering"
         var description: String {
             return self.rawValue
         }
