@@ -89,14 +89,17 @@ struct BabyBasePreviewView: View {
             
             Image(uiImage: base.ImageOfCeleb).resizable().frame(width:size, height: size).aspectRatio(contentMode: .fit)
             VStack{
-                    
+                Spacer()
+                VisualEffectView(effect: UIBlurEffect(style: .regular)).frame(width: size, height: size/3, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }
+            VStack{
+                Spacer()
                     Text("Base Of " + base.NameOfCeleb).font(.title)
-                    Text("$"+String(base.BasePrice)+"K+").font(.subheadline)
+                Text("$"+String(base.BasePrice)+"K+").font(.subheadline)
                     if showBio {
                         Text(base.Description)
                     }
-                    Spacer()
-                }.padding()
+            }.padding()
         }.cornerRadius(10.0).foregroundColor(.white).onTapGesture {
             model.currentBase = base
             model.currentOrder.OrderedBaby.Base = base
@@ -217,6 +220,12 @@ struct BabyBasePreviewListView: View{
             }.shadow(radius: 10.0).foregroundColor(.black)
         }.navigationBarTitle("All Babies")
     }
+}
+
+struct VisualEffectView: UIViewRepresentable {
+    var effect: UIVisualEffect?
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView { UIVisualEffectView() }
+    func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) { uiView.effect = effect }
 }
 
 struct HomeView_Previews: PreviewProvider {
