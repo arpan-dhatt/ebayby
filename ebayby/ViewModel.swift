@@ -88,6 +88,15 @@ class ViewModel: ObservableObject {
         InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0.01"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .loan, Status: .ordering, AdditionalAccessories: [])
     ]
     
+    //colors
+    @Published var colors: [Color] = [
+        Color.blue,
+        Color.green,
+        Color.purple,
+        Color.red,
+        Color.orange,
+    ]
+    
     //User
     @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", SocialCredit: 1, Location: "Dallas", Bio: "El Presidente", ProfilePicture: UIImage(named: "Donlad")!, BabiesInCart: [], BabiesOrdered: [])
     

@@ -21,7 +21,7 @@ struct HomeView: View {
                 Image(systemName: "house").font(.system(size: 28, weight:.ultraLight))
                 Text("Profile")
             }.tag(Tab.profile)
-            testView(model: self.model).tabItem {
+            OrderPortal(model: self.model).tabItem {
                 Image(systemName: "list.bullet").font(.system(size: 28, weight:.ultraLight))
                 Text("Orders")
             }.tag(Tab.orders)
@@ -85,17 +85,10 @@ struct BabyBasePreviewView: View {
     var showBio: Bool
     
     var body: some View{
-        VStack{
+        ZStack{
             
             Image(uiImage: base.ImageOfCeleb).resizable().frame(width:size, height: size).aspectRatio(contentMode: .fit)
-            
-            Button(action: {
-                model.currentBase = base
-                model.currentOrder.OrderedBaby.Base = base
-                model.page = "order"
-                model.currentOrderView = "Overview"
-            }) {
-                VStack{
+            VStack{
                     
                     Text("Base Of " + base.NameOfCeleb).font(.title)
                     Text("$"+String(base.BasePrice)+"K+").font(.subheadline)
@@ -104,9 +97,12 @@ struct BabyBasePreviewView: View {
                     }
                     Spacer()
                 }.padding()
-            }
-            
-        }.background(Color.init(.lightGray)).cornerRadius(10.0).foregroundColor(.white)
+        }.cornerRadius(10.0).foregroundColor(.white).onTapGesture {
+            model.currentBase = base
+            model.currentOrder.OrderedBaby.Base = base
+            model.page = "order"
+            model.currentOrderView = "Overview"
+        }
     }
 }
 
