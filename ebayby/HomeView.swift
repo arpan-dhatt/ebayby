@@ -180,9 +180,8 @@ struct ArticlePreviewView: View {
     var body: some View{
         VStack{
             ZStack{
-                
-                Image(uiImage: article.Image).resizable().aspectRatio(contentMode: .fill).cornerRadius(10.0).onTapGesture(){
-                    model.page = "order"
+                Image(uiImage: article.Image).resizable().aspectRatio(contentMode: .fill).cornerRadius(10.0).onTapGesture {
+                    showArticle.toggle()
                 }
                 
                 VStack{
@@ -212,7 +211,6 @@ struct BabyBasePreviewListView: View{
     var baseList: Array<InfoModel.BabyBase>
     
     var body: some View{
-        
         ScrollView(.vertical){
             VStack(alignment: .leading) {
                 VStack(spacing:15){

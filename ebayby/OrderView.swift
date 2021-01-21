@@ -243,18 +243,21 @@ struct SelectionBox: View {
     var body: some View {
         VStack{
             if eyeOptions[optionIndex].2 {
-                Text(eyeOptions[optionIndex].0.rawValue).padding().overlay(RoundedRectangle(cornerRadius:5).stroke(eyeOptions[optionIndex].1, lineWidth: 5))
+                Text(eyeOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(eyeOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(eyeOptions[optionIndex].1, lineWidth: 5)).transition(.opacity)
             }
             else {
-                Text(eyeOptions[optionIndex].0.rawValue).padding().overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 5))
+                Text(eyeOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 5)).transition(.opacity)
             }
             
         }.onTapGesture {
-            for i in 0..<eyeOptions.count {
-                eyeOptions[i].2 = false
-                model.currentOrder.OrderedBaby.EyeColor = eyeOptions[optionIndex].0
+            withAnimation {
+                for i in 0..<eyeOptions.count {
+                    eyeOptions[i].2 = false
+                    model.currentOrder.OrderedBaby.EyeColor = eyeOptions[optionIndex].0
+                }
+                eyeOptions[optionIndex].2 = true
             }
-            eyeOptions[optionIndex].2 = true
+            
         }
     }
 }
