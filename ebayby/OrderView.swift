@@ -78,6 +78,14 @@ struct OrderPhysicalView: View{
         (InfoModel.EyeColor.green, Color.green, false),
         (InfoModel.EyeColor.purple, Color.purple, false)
     ]
+    @State var skinOptions = [
+        (InfoModel.SkinColor.black, Color.black, false),
+        (InfoModel.SkinColor.brown, Color.init(.brown), false),
+        (InfoModel.SkinColor.blue, Color.blue, false),
+        (InfoModel.SkinColor.tan, Color.yellow, false),
+        (InfoModel.SkinColor.red, Color.red, false),
+        (InfoModel.SkinColor.white, Color.pink, false),
+    ]
     @State var babyName = ""
     
     var body: some View {
@@ -116,79 +124,6 @@ struct OrderPhysicalView: View{
                             SelectionBox(model: model, eyeOptions: $eyeOptions, optionIndex: $0)
                         }
                     }
-                    
-//                    HStack{
-//                        Spacer()
-//                        SelectionBox(option: "Green", color: $eyeOption1, mode: self.model).onTapGesture {
-//                            eyeOption1 = Color.green
-//                            eyeOption2 = Color.gray
-//                            eyeOption3 = Color.gray
-//                            eyeOption4 = Color.gray
-//                            eyeOption5 = Color.gray
-//                            eyeOption6 = Color.gray
-//                            model.currentOrder.OrderedBaby.EyeColor = .green
-//
-//                        }
-//                        Spacer()
-//                        SelectionBox(option: "Blue", color: $eyeOption2, mode: self.model).onTapGesture {
-//                            eyeOption1 = Color.gray
-//                            eyeOption2 = Color.green
-//                            eyeOption3 = Color.gray
-//                            eyeOption4 = Color.gray
-//                            eyeOption5 = Color.gray
-//                            eyeOption6 = Color.gray
-//                            model.currentOrder.OrderedBaby.EyeColor = .blue
-//                        }
-//                        Spacer()
-//                    }
-//                    HStack{
-//                        Spacer()
-//                        SelectionBox(option: "Black", color: $eyeOption3, mode: self.model).onTapGesture {
-//                            eyeOption1 = Color.gray
-//                            eyeOption2 = Color.gray
-//                            eyeOption3 = Color.green
-//                            eyeOption4 = Color.gray
-//                            eyeOption5 = Color.gray
-//                            eyeOption6 = Color.gray
-//                            model.currentOrder.OrderedBaby.EyeColor = .black
-//                        }
-//                        Spacer()
-//                        SelectionBox(option: "Brown", color: $eyeOption4, mode: self.model).onTapGesture {
-//                            eyeOption1 = Color.gray
-//                            eyeOption2 = Color.gray
-//                            eyeOption3 = Color.gray
-//                            eyeOption4 = Color.green
-//                            eyeOption5 = Color.gray
-//                            eyeOption6 = Color.gray
-//                            model.currentOrder.OrderedBaby.EyeColor = .brown
-//                        }
-//                        Spacer()
-//                    }
-//                    HStack{
-//                        Spacer()
-//                        SelectionBox(option: "Gold", color: $eyeOption5, mode: self.model).onTapGesture {
-//                            eyeOption1 = Color.gray
-//                            eyeOption2 = Color.gray
-//                            eyeOption3 = Color.gray
-//                            eyeOption4 = Color.gray
-//                            eyeOption5 = Color.green
-//                            eyeOption6 = Color.gray
-//                            model.currentOrder.OrderedBaby.EyeColor = .gold
-//                        }
-//                        Spacer()
-//                        SelectionBox(option: "Purple", color: $eyeOption6, mode: self.model).onTapGesture {
-//                            eyeOption1 = Color.gray
-//                            eyeOption2 = Color.gray
-//                            eyeOption3 = Color.gray
-//                            eyeOption4 = Color.gray
-//                            eyeOption5 = Color.gray
-//                            eyeOption6 = Color.green
-//                            model.currentOrder.OrderedBaby.EyeColor = .purple
-//                        }
-//                        Spacer()
-//                    }
-                    
-                    
                 }
                 VStack{
                     HStack{
@@ -203,6 +138,19 @@ struct OrderPhysicalView: View{
                     Slider(value: $model.currentOrder.OrderedBaby.Thiccnes, in: 0...100, step: 1).padding().shadow(radius: 2.5)
                     Text(String(model.currentOrder.OrderedBaby.Thiccnes)+"%").font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
                 }
+                VStack{
+                    HStack{
+                        Text("Skin Color").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
+                        Spacer()
+                        Image(systemName: "pencil.tip.crop.circle.badge.plus").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
+                    }
+                    VStack {
+                        ForEach((0..<6), id: \.self) {
+                            SelectionBoxSkin(model: model, skinOptions: $skinOptions, optionIndex: $0)
+                        }
+                    }
+                }
+
                 Divider()
                 Spacer()
                
@@ -256,6 +204,33 @@ struct SelectionBox: View {
                     model.currentOrder.OrderedBaby.EyeColor = eyeOptions[optionIndex].0
                 }
                 eyeOptions[optionIndex].2 = true
+            }
+            
+        }
+    }
+}
+
+struct SelectionBoxSkin: View {
+    @ObservedObject var model: ViewModel
+    @Binding var skinOptions: Array<(InfoModel.SkinColor, Color, Bool)>
+    var optionIndex: Int
+    
+    var body: some View {
+        VStack{
+            if skinOptions[optionIndex].2 {
+                Text(skinOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(skinOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(skinOptions[optionIndex].1, lineWidth: 1)).transition(.opacity)
+            }
+            else {
+                Text(skinOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1)).transition(.opacity)
+            }
+            
+        }.onTapGesture {
+            withAnimation {
+                for i in 0..<skinOptions.count {
+                    skinOptions[i].2 = false
+                    model.currentOrder.OrderedBaby.SkinColor = skinOptions[optionIndex].0
+                }
+                skinOptions[optionIndex].2 = true
             }
             
         }
