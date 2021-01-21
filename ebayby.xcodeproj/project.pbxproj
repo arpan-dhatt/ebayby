@@ -89,9 +89,9 @@
 				6E021C8025B39D8500D70F7C /* HomeView.swift */,
 				788039C325B62C08005E608E /* ProfileView.swift */,
 				788039C625B638A5005E608E /* DocumentSheetView.swift */,
-				6E15629825B6A2C600FF50A1 /* OrderView.swift */,
 				788BDA3D25B8F54D00931959 /* ArticleSheetView.swift */,
 				6EBB7AAD25B92E3400DC2831 /* OrderPortal.swift */,
+				6E15629825B6A2C600FF50A1 /* OrderView.swift */,
 				6EC18A8325B9431500207676 /* OrderInternalView.swift */,
 			);
 			path = ebayby;
