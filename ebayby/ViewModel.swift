@@ -17,48 +17,38 @@ class ViewModel: ObservableObject {
     
     //BabyBase Infortion
     @Published var AllBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Donnald", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Biden", ImageOfCeleb: UIImage(named: "Biden")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald2", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald4", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald5", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald6", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald7", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald8", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
+        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 1, Description:"Perfection Taken Physical Form"),
+        .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 1, Description:"Consists of Largely Hispanic Geneology"),
+        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
+        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
+        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology")
     ]
     @Published var DealBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Donnald", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald1", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald2", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald4", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald5", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald6", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald7", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald8", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
+        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 1, Description:"Perfection Taken Physical Form"),
+        .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 1, Description:"Consists of Largely Hispanic Geneology"),
+        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
+        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
     ]
     @Published var PricyBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Donnald", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald1", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald2", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald4", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald5", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald6", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald7", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald8", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
+        .init(NameOfCeleb: "Kim", ImageOfCeleb: UIImage(named: "jong")!, BasePrice: 1, Description:"Descendent of God"),
+        .init(NameOfCeleb: "Musk", ImageOfCeleb: UIImage(named: "musk")!, BasePrice: 1, Description:"Geneology Originating from Mars"),
+        .init(NameOfCeleb: "Joe", ImageOfCeleb: UIImage(named: "whiteboy")!, BasePrice: 1, Description:"Geneology Originating in Western Europe"),
+        .init(NameOfCeleb: "Biden", ImageOfCeleb: UIImage(named: "Biden")!, BasePrice: 1, Description:"Mysterious Geneology of Scranton"),
+        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
+        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
+        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology")
     ]
     @Published var CheapBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Donnald", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald1", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald2", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald4", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald5", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald6", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald7", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
-        .init(NameOfCeleb: "Donnald8", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 1, Description:"nulllll"),
+        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
+        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 1, Description:"Perfection Taken Physical Form"),
+        .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 1, Description:"Consists of Largely Hispanic Geneology"),
+        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
+        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology")
     ]
     @Published var FeaturedArticles: Array<InfoModel.Article> = [
         .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),

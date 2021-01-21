@@ -67,7 +67,7 @@ struct ForYouView: View {
                         
                         BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Deals!", baseList: model.DealBases)
                         
-                        BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Exclusive Babies", baseList: model.DealBases)
+                        BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Exclusive Babies", baseList: model.PricyBases)
                         
                         BabyBasePreviewHomePageView(model: model, selection: self.$selection, title: "Cheap Babies", baseList: model.CheapBases)
                     }
@@ -90,7 +90,7 @@ struct BabyBasePreviewView: View {
             Image(uiImage: base.ImageOfCeleb).resizable().frame(width:size, height: size).aspectRatio(contentMode: .fit)
             VStack{
                 Spacer()
-                VisualEffectView(effect: UIBlurEffect(style: .regular)).frame(width: size, height: size/3, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                VisualEffectView(effect: UIBlurEffect(style: .dark)).frame(width: size, height: size/3, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
             VStack{
                 Spacer()
