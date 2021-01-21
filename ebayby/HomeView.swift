@@ -25,7 +25,6 @@ struct HomeView: View {
                 Image(systemName: "list.bullet").font(.system(size: 28, weight:.ultraLight))
                 Text("Orders")
             }.tag(Tab.orders)
-            
         }
     }
 }
@@ -90,7 +89,7 @@ struct BabyBasePreviewView: View {
             Image(uiImage: base.ImageOfCeleb).resizable().frame(width:size, height: size).aspectRatio(contentMode: .fit)
             VStack{
                 Spacer()
-                VisualEffectView(effect: UIBlurEffect(style: .dark)).frame(width: size, height: size/3, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                VisualEffectView(effect: UIBlurEffect(style: .regular)).frame(width: size, height: size/3, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
             VStack{
                 Spacer()
@@ -105,7 +104,7 @@ struct BabyBasePreviewView: View {
             model.currentOrder.OrderedBaby.Base = base
             model.page = "order"
             withAnimation{
-                model.currentOrderView = "Overview"
+                model.currentOrderView = "Preview"
             }
         }
     }

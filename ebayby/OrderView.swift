@@ -210,11 +210,11 @@ struct SelectionBox: View {
             }
             
         }.onTapGesture {
+            for i in 0..<eyeOptions.count {
+                eyeOptions[i].2 = false
+                model.currentOrder.OrderedBaby.EyeColor = eyeOptions[optionIndex].0
+            }
             withAnimation {
-                for i in 0..<eyeOptions.count {
-                    eyeOptions[i].2 = false
-                    model.currentOrder.OrderedBaby.EyeColor = eyeOptions[optionIndex].0
-                }
                 eyeOptions[optionIndex].2 = true
             }
             
@@ -236,15 +236,15 @@ struct SelectionBoxSkin: View {
                 Text(skinOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1)).transition(.opacity)
             }
             
-        }.onTapGesture {
+        }
+        .onTapGesture {
+            for i in 0..<skinOptions.count {
+                skinOptions[i].2 = false
+                model.currentOrder.OrderedBaby.SkinColor = skinOptions[optionIndex].0
+            }
             withAnimation {
-                for i in 0..<skinOptions.count {
-                    skinOptions[i].2 = false
-                    model.currentOrder.OrderedBaby.SkinColor = skinOptions[optionIndex].0
-                }
                 skinOptions[optionIndex].2 = true
             }
-            
         }
     }
 }
