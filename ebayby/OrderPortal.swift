@@ -28,13 +28,27 @@ struct OrderPortal: View {
                     else{
                         VStack{
                             coolTitleLight(text: "In Delivery")
-                            deliveryCard(model: self.model, card: model.allOrders[0])
+                            ForEach(model.allOrders, id: \.id){ order in
+                                if order.Status == .delivery {
+                                    deliveryCard(model: self.model, card:order).padding().shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                }
+                            }
                         }
                         VStack{
                             coolTitleLight(text: "In Creation")
+                            ForEach(model.allOrders, id: \.id){ order in
+                                if order.Status == .ordering {
+                                    deliveryCard(model: self.model, card:order).padding().shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                }
+                            }
                         }
                         VStack{
                             coolTitleLight(text: "In Delivery")
+                            ForEach(model.allOrders, id: \.id){ order in
+                                if order.Status == .paid || order.Status == .partiallyPaid {
+                                    deliveryCard(model: self.model, card:order).padding().shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                }
+                            }
                         }
                     }
                 }
@@ -53,13 +67,13 @@ struct deliveryCard: View {
                 HStack{
                     Image(uiImage: card.OrderedBaby.Base.ImageOfCeleb).resizable().frame(width:100, height: 100).aspectRatio(contentMode: .fit).clipShape(Circle()).shadow(radius: 10).padding()
                     VStack{
-                        Text(card.OrderedBaby.Base.NameOfCeleb).font(.system(size: 28, weight: .bold)).foregroundColor(Color.black)
+                        Text(card.OrderedBaby.Base.NameOfCeleb).font(.system(size: 28, weight: .bold)).foregroundColor(Color.white)
                         HStack{
                             VStack(alignment: .leading){
                                 Text("IQ: "+String(card.OrderedBaby.IQ))
                                 Text("Eye Color: "+card.OrderedBaby.EyeColor.rawValue)
                             }
-                            Spacer()
+                            
                             VStack(alignment: .leading){
                                 Text("Height: "+String(card.OrderedBaby.Height))
                                 Text("Skin Color: "+card.OrderedBaby.SkinColor.rawValue)
@@ -73,15 +87,15 @@ struct deliveryCard: View {
                         Text("Financing: "+card.Financing.rawValue)
                         Text("Status: "+card.Status.rawValue)
                         Spacer()
-                    }.padding().font(.headline)
+                    }.padding([.leading,.top,.bottom]).font(.callout)
                     
                     VStack(alignment: .leading){
                         Text("Total Price: $"+String(card.OrderedBaby.TotalPrice))
                         Text("Projected Income: $"+String(card.OrderedBaby.ProjectedIncome))
                         Text("Net Benefit: $"+String(card.OrderedBaby.TotalPrice - card.OrderedBaby.ProjectedIncome))
-                    }.font(.footnote)
+                    }.padding(.trailing).font(.footnote)
                 }
-            }.padding()
+            }.background(Color.black).foregroundColor(Color.white).cornerRadius(10.0)
         }
     }
 }
