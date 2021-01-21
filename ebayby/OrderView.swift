@@ -18,7 +18,7 @@ struct OrderView: View {
             OrderPhysicalView(model: model)
         }
         if model.currentOrderView == "Internal"{
-            OrderPreviewView(model: model)
+            OrderInternalView(model: model)
         }
         if model.currentOrderView == "Overview"{
             OrderPreviewView(model: model)

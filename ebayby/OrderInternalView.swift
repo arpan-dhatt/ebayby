@@ -10,42 +10,56 @@ import SwiftUI
 struct OrderInternalView: View {
     @ObservedObject var model: ViewModel
     
+    @State var traits = [
+        ("Agile",10000.0, false),
+        ("Dumb",-10000.0, false),
+        ("Quirky",10000.0, false),
+        ("Capitalistic",-100000.0, false),
+        ("Socialistic",100000.0, false),
+        ("Insecure",-10000.0, false),
+        ("Egotistical",-100000.0, false),
+        ("Hardworking",1000000.0, false),
+        ("Resourceful",1000000.0, false),
+        ("Imaginative",1000000.0, false),
+        ("Individualistic",100000.0, false),
+        ("Perfectionist",100000.0, false),
+        ("Hopeful",1000000.0, false),
+        ("Funny",10000000.0, false),
+        ("Sophisticated",1000000.0, false),
+        ("Lazy",-10000.0, false),
+        ("Materialistic",-10000000.0, false)
+    ]
+    
     var body: some View {
         ZStack{
             ScrollView{
             VStack(alignment: .center){
                
                 Spacer()
-                Text(String(model.currentOrder.OrderedBaby.Base.NameOfCeleb)).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                VStack{
-                    HStack{
-                        Text("Name").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
-                        Spacer()
-                        Image(systemName: "square.and.pencil").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
-                    }
-                    TextField("Enter A Name For Your Baby", text:$model.currentOrder.OrderedBaby.Base.NameOfCeleb).textFieldStyle(RoundedBorderTextFieldStyle()).padding().shadow(radius: 2.5)
-                }
+                Text("Hello").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     VStack{
                         HStack{
-                            Text("Final Height").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
+                            Text("IQ").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
                             Spacer()
-                            Image(systemName: "ruler").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
+                            Image(systemName: "paintbrush").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
                         }
-                        Slider(value: $model.currentOrder.OrderedBaby.Height, in: 100...200, step: 1).padding().shadow(radius: 2.5)
-                        Text(String(model.currentOrder.OrderedBaby.Height)+" cm").font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
+                        Slider(value: $model.currentOrder.OrderedBaby.Height, in: 50...180, step: 1).padding().shadow(radius: 2.5)
+                        Text(String(model.currentOrder.OrderedBaby.Height)).font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
                     }
                 VStack{
                     HStack{
                         VStack{
-                        Text("Thiccness").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black)
-                            Text("33% is Average")
+                        Text("Personality Traits").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black)
                         }.padding()
                         Spacer()
-                        Image(systemName: "ruler").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
+                        Image(systemName: "hare.fill").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
                     }
-
-                    Slider(value: $model.currentOrder.OrderedBaby.Thiccnes, in: 0...100, step: 1).padding().shadow(radius: 2.5)
-                    Text(String(model.currentOrder.OrderedBaby.Thiccnes)+"%").font(.system(size: 28, weight: .light)).foregroundColor(Color.black)
+                    VStack{
+                        ForEach((0..<traits.count), id: \.self) {
+                                personalityTraitsBox(model: self.model, traitOptions: $traits, optionsIndex: $0)
+                            }
+                    }
+                    
                 }
 
                 Divider()
@@ -56,7 +70,7 @@ struct OrderInternalView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.currentOrderView = "Preview"
+                            model.currentOrderView = "Physical"
                         }){
                             Image(systemName: "arrow.left").font(.system(size: 24, weight: .light))
                             Text("Back").font(.system(size: 18, weight: .light)).padding()
@@ -66,7 +80,7 @@ struct OrderInternalView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.currentOrderView = "Internal"
+                            model.currentOrderView = "Overview"
                         }){
                             Text("Next").font(.system(size: 18, weight: .light)).padding()
                             Image(systemName: "arrow.right").font(.system(size: 24, weight: .light))
@@ -77,6 +91,40 @@ struct OrderInternalView: View {
             }
         }
     }
+}
+
+struct personalityTraitsBox: View {
+    @ObservedObject var model: ViewModel
+    @Binding var traitOptions: Array<(String, Double, Bool)>
+    var optionsIndex: Int
+    @State var color: Color = Color.gray
+    
+    var body: some View {
+        VStack{
+            Text(traitOptions[optionsIndex].0)
+            Text("$"+String(traitOptions[optionsIndex].1)).font(.caption2)
+        }.padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(color).overlay(RoundedRectangle(cornerRadius:5).stroke(color, lineWidth: 1)).transition(.opacity).onTapGesture {
+            withAnimation {
+                traitOptions[optionsIndex].2.toggle()
+                if traitOptions[optionsIndex].2 {
+                    model.currentOrder.OrderedBaby.Traits.append(traitOptions[optionsIndex].0)
+                    self.color = Color.green
+                    model.currentOrder.OrderedBaby.TotalPrice += Float(traitOptions[optionsIndex].1)
+                }
+                else{
+                    self.color = Color.gray
+                    model.currentOrder.OrderedBaby.TotalPrice -= Float(traitOptions[optionsIndex].1)
+                    for val in 0..<model.currentOrder.OrderedBaby.Traits.count {
+                        if traitOptions[optionsIndex].0 == model.currentOrder.OrderedBaby.Traits[val] {
+                            model.currentOrder.OrderedBaby.Traits.remove(at: val)
+                            break
+                        }
+                    }
+                }
+            }
+    }
+    
+}
 }
 
 struct OrderInternalView_Previews: PreviewProvider {
