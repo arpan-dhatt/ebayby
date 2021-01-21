@@ -70,7 +70,14 @@ struct OrderPreviewView: View {
 
 struct OrderPhysicalView: View{
     @ObservedObject var model: ViewModel
-    @State var eyeOptions = Array.init(repeating: Color.gray, count: 6)
+    @State var eyeOptions = [
+        (InfoModel.EyeColor.black, Color.black, false),
+        (InfoModel.EyeColor.blue, Color.blue, false),
+        (InfoModel.EyeColor.brown, Color.init(.brown), false),
+        (InfoModel.EyeColor.gold, Color.yellow, false),
+        (InfoModel.EyeColor.green, Color.green, false),
+        (InfoModel.EyeColor.purple, Color.purple, false)
+    ]
     @State var babyName = ""
     
     var body: some View {
@@ -106,7 +113,7 @@ struct OrderPhysicalView: View{
                     }
                     VStack {
                         ForEach((0..<6), id: \.self) {
-                            SelectionBox(option: "blah", eyeOptions: $eyeOptions, eyeOptionsIndex: $0, optionColor: <#T##Color#>, optionEnum: <#T##InfoModel.EyeColor#>, model: <#T##ViewModel#>)
+                            SelectionBox(model: model, eyeOptions: $eyeOptions, optionIndex: $0)
                         }
                     }
                     
@@ -229,24 +236,25 @@ struct OrderPhysicalView: View{
 }
 
 struct SelectionBox: View {
-    var option: String
-    @Binding var eyeOptions: Array<Color>
-    var eyeOptionsIndex: Int
-    var optionColor: Color
-    var optionEnum: InfoModel.EyeColor
     @ObservedObject var model: ViewModel
+    @Binding var eyeOptions: Array<(InfoModel.EyeColor, Color, Bool)>
+    var optionIndex: Int
     
     var body: some View {
         VStack{
-            Text(option).padding().overlay(RoundedRectangle(cornerRadius:5).stroke(eyeOptions[eyeOptionsIndex], lineWidth: 5))
-        }.onTapGesture {
-            for i in 0...eyeOptions.count {
-                if i != eyeOptionsIndex {
-                    eyeOptions[i] = .gray
-                }
-                eyeOptions[eyeOptionsIndex] = optionColor
-                model.currentOrder.OrderedBaby.EyeColor = optionEnum
+            if eyeOptions[optionIndex].2 {
+                Text(eyeOptions[optionIndex].0.rawValue).padding().overlay(RoundedRectangle(cornerRadius:5).stroke(eyeOptions[optionIndex].1, lineWidth: 5))
             }
+            else {
+                Text(eyeOptions[optionIndex].0.rawValue).padding().overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 5))
+            }
+            
+        }.onTapGesture {
+            for i in 0..<eyeOptions.count {
+                eyeOptions[i].2 = false
+                model.currentOrder.OrderedBaby.EyeColor = eyeOptions[optionIndex].0
+            }
+            eyeOptions[optionIndex].2 = true
         }
     }
 }
