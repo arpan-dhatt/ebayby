@@ -28,6 +28,7 @@ struct OrderPortal: View {
                     else{
                         VStack{
                             coolTitleLight(text: "In Delivery")
+                            deliveryCard(model: self.model, card: model.allOrders[0])
                         }
                         VStack{
                             coolTitleLight(text: "In Creation")
@@ -38,6 +39,49 @@ struct OrderPortal: View {
                     }
                 }
             }
+        }
+    }
+}
+
+struct deliveryCard: View {
+    @ObservedObject var model: ViewModel
+    var card: InfoModel.Order
+    
+    var body: some View {
+        ZStack{
+            VStack{
+                HStack{
+                    Image(uiImage: card.OrderedBaby.Base.ImageOfCeleb).resizable().frame(width:100, height: 100).aspectRatio(contentMode: .fit).clipShape(Circle()).shadow(radius: 10).padding()
+                    VStack{
+                        Text(card.OrderedBaby.Base.NameOfCeleb).font(.system(size: 28, weight: .bold)).foregroundColor(Color.black)
+                        HStack{
+                            VStack(alignment: .leading){
+                                Text("IQ: "+String(card.OrderedBaby.IQ))
+                                Text("Eye Color: "+card.OrderedBaby.EyeColor.rawValue)
+                            }
+                            Spacer()
+                            VStack(alignment: .leading){
+                                Text("Height: "+String(card.OrderedBaby.Height))
+                                Text("Skin Color: "+card.OrderedBaby.SkinColor.rawValue)
+                                
+                            }
+                        }.font(.caption2).padding(.top)
+                    }
+                }
+                HStack{
+                    VStack(alignment: .leading){
+                        Text("Financing: "+card.Financing.rawValue)
+                        Text("Status: "+card.Status.rawValue)
+                        Spacer()
+                    }.padding().font(.headline)
+                    
+                    VStack(alignment: .leading){
+                        Text("Total Price: $"+String(card.OrderedBaby.TotalPrice))
+                        Text("Projected Income: $"+String(card.OrderedBaby.ProjectedIncome))
+                        Text("Net Benefit: $"+String(card.OrderedBaby.TotalPrice - card.OrderedBaby.ProjectedIncome))
+                    }.font(.footnote)
+                }
+            }.padding()
         }
     }
 }
