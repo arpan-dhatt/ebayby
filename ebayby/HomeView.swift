@@ -104,7 +104,9 @@ struct BabyBasePreviewView: View {
             model.currentBase = base
             model.currentOrder.OrderedBaby.Base = base
             model.page = "order"
-            model.currentOrderView = "Overview"
+            withAnimation{
+                model.currentOrderView = "Overview"
+            }
         }
     }
 }
@@ -209,6 +211,8 @@ struct BabyBasePreviewListView: View{
     @ObservedObject var model: ViewModel
     var baseList: Array<InfoModel.BabyBase>
     
+    @Namespace static var placeholder
+    
     var body: some View{
         ScrollView(.vertical){
             VStack(alignment: .leading) {
@@ -229,6 +233,7 @@ struct VisualEffectView: UIViewRepresentable {
 }
 
 struct HomeView_Previews: PreviewProvider {
+    
     static var previews: some View {
         HomeView(model: ViewModel())
     }

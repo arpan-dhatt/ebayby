@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OrderInternalView: View {
     @ObservedObject var model: ViewModel
+    var orderspace: Namespace.ID
     
     @State var traits = [
         ("Agile",10000.0, false),
@@ -36,7 +37,7 @@ struct OrderInternalView: View {
             VStack(alignment: .center){
                
                 Spacer()
-                Text("Hello").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                Text(model.currentOrder.OrderedBaby.Base.NameOfCeleb).font(.largeTitle).matchedGeometryEffect(id: "NameOfCeleb", in: orderspace)
                     VStack{
                         HStack{
                             Text("IQ").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
@@ -70,7 +71,9 @@ struct OrderInternalView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.currentOrderView = "Physical"
+                            withAnimation {
+                                model.currentOrderView = "Physical"
+                            }
                         }){
                             Image(systemName: "arrow.left").font(.system(size: 24, weight: .light))
                             Text("Back").font(.system(size: 18, weight: .light)).padding()
@@ -80,7 +83,9 @@ struct OrderInternalView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.currentOrderView = "Overview"
+                            withAnimation {
+                                model.currentOrderView = "Overview"
+                            }
                         }){
                             Text("Next").font(.system(size: 18, weight: .light)).padding()
                             Image(systemName: "arrow.right").font(.system(size: 24, weight: .light))
@@ -128,7 +133,9 @@ struct personalityTraitsBox: View {
 }
 
 struct OrderInternalView_Previews: PreviewProvider {
+    @Namespace static var placeholder
+    
     static var previews: some View {
-        OrderInternalView(model: ViewModel())
+        OrderInternalView(model: ViewModel(), orderspace: placeholder)
     }
 }

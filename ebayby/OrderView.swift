@@ -9,25 +9,27 @@ import SwiftUI
 
 struct OrderView: View {
     @ObservedObject var model: ViewModel
+    @Namespace var orderspace
     
     var body: some View {
         if model.currentOrderView == "Preview"{
-            OrderPreviewView(model: model)
+            OrderPreviewView(model: model, orderspace: orderspace)
         }
         if model.currentOrderView == "Physical"{
-            OrderPhysicalView(model: model)
+            OrderPhysicalView(model: model, orderspace: orderspace)
         }
         if model.currentOrderView == "Internal"{
-            OrderInternalView(model: model)
+            OrderInternalView(model: model, orderspace: orderspace)
         }
         if model.currentOrderView == "Overview"{
-            OrderPreviewView(model: model)
+            OrderPreviewView(model: model, orderspace: orderspace)
         }
     }
 }
 
 struct OrderPreviewView: View {
     @ObservedObject var model: ViewModel
+    var orderspace: Namespace.ID
     
     var body: some View {
         ZStack{
@@ -36,7 +38,7 @@ struct OrderPreviewView: View {
                 Text("Hello " + model.user.name).font(.largeTitle).padding()
                 Text("You Have Selected "+model.currentBase.NameOfCeleb+" To Be The Base Of Your Child!").font(.headline).padding()
                 Image(uiImage: model.currentBase.ImageOfCeleb).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit).clipShape(Circle()).shadow(radius: 10).padding()
-                Text(model.currentBase.NameOfCeleb).font(.largeTitle)
+                Text(model.currentBase.NameOfCeleb).font(.largeTitle).matchedGeometryEffect(id: "NameOfCeleb", in: orderspace)
                 Text(model.currentBase.Description).font(.title)
                 Text("$"+String(model.currentBase.BasePrice)+"+").font(.headline).padding()
                 Spacer()
@@ -45,7 +47,9 @@ struct OrderPreviewView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.page = "home"
+                            withAnimation {
+                                model.page = "home"
+                            }
                         }){
                             Text("Home").font(.system(size: 18, weight: .light)).padding()
                             Image(systemName: "house.fill").font(.system(size: 24, weight: .light))
@@ -55,7 +59,9 @@ struct OrderPreviewView: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.currentOrderView = "Physical"
+                            withAnimation {
+                                model.currentOrderView = "Physical"
+                            }
                         }){
                             Text("Next").font(.system(size: 18, weight: .light)).padding()
                             Image(systemName: "arrow.right").font(.system(size: 24, weight: .light))
@@ -70,6 +76,8 @@ struct OrderPreviewView: View {
 
 struct OrderPhysicalView: View{
     @ObservedObject var model: ViewModel
+    var orderspace: Namespace.ID
+    
     @State var eyeOptions = [
         (InfoModel.EyeColor.black, Color.black, false),
         (InfoModel.EyeColor.blue, Color.blue, false),
@@ -95,7 +103,7 @@ struct OrderPhysicalView: View{
             VStack(alignment: .center){
                
                 Spacer()
-                Text(String(model.currentOrder.OrderedBaby.Base.NameOfCeleb)).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                Text(String(model.currentOrder.OrderedBaby.Base.NameOfCeleb)).font(.largeTitle).matchedGeometryEffect(id: "NameOfCeleb", in: orderspace)
                 VStack{
                     HStack{
                         Text("Name").font(.system(size: 28, weight: .bold)).foregroundColor(Color.black).padding()
@@ -159,7 +167,9 @@ struct OrderPhysicalView: View{
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.currentOrderView = "Preview"
+                            withAnimation {
+                                model.currentOrderView = "Preview"
+                            }
                         }){
                             Image(systemName: "arrow.left").font(.system(size: 24, weight: .light))
                             Text("Back").font(.system(size: 18, weight: .light)).padding()
@@ -169,7 +179,9 @@ struct OrderPhysicalView: View{
                     HStack {
                         Spacer()
                         Button(action: {
-                            model.currentOrderView = "Internal"
+                            withAnimation {
+                                model.currentOrderView = "Internal"
+                            }
                         }){
                             Text("Next").font(.system(size: 18, weight: .light)).padding()
                             Image(systemName: "arrow.right").font(.system(size: 24, weight: .light))
@@ -238,6 +250,7 @@ struct SelectionBoxSkin: View {
 }
 
 struct OrderView_Previews: PreviewProvider {
+    
     static var previews: some View {
         OrderView(model: ViewModel())
     }
