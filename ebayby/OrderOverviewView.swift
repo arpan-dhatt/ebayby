@@ -11,17 +11,35 @@ struct OrderOverviewView: View {
     @ObservedObject var model: ViewModel
     var orderspace: Namespace.ID
     
+    @State var paymentOptions = [
+        (InfoModel.Financing.cash, Color.green, false),
+        (InfoModel.Financing.credit, Color.blue, false),
+        (InfoModel.Financing.debit, Color.orange, false),
+        (InfoModel.Financing.loan, Color.purple, false),
+        (InfoModel.Financing.crypto, Color.pink, false),
+    ]
+    
     var body: some View {
         ZStack{
 
                 VStack{
                     Spacer()
                     VStack{
-                        ZStack{
-                            VStack {
-                                coolTitle(text: model.user.name+", Ready For A New Life?", image: "plus.square.on.square")
-                                coolTitleLight(text: "NEW: Free Shipping In 9-12 Weeks With ChariPrime!")
-                                Spacer()
+                        ScrollView{
+                            VStack(alignment:.leading) {
+                                coolTitleLight(text: model.user.name+", Ready For A New Life?").padding(.bottom, -17.5)
+                                Text("*You're Almost There :)").font(.caption).padding(.leading)
+                                
+                                coolTitle(text: "Payment Method", image: "creditcard")
+                                VStack {
+                                    ForEach((0..<5), id: \.self) {
+                                        SelectionBoxPayment(model: self.model, financingOptions: $paymentOptions, optionIndex: $0)
+                                    }
+                                }.padding()
+                                VStack(alignment: .leading){
+                                    Text("*Don't Worry, We Already Have Your Payment Information!").font(.caption).padding(.leading)
+                                coolTitle(text: "Your Baby", image: "heart.circle")
+                                }
                                 VStack{
                                 HStack{
                                     Image(uiImage: model.currentOrder.OrderedBaby.Base.ImageOfCeleb).resizable().frame(width:150, height: 150).aspectRatio(contentMode: .fit).clipShape(Circle()).shadow(radius: 10).padding()
@@ -66,8 +84,10 @@ struct OrderOverviewView: View {
                                     Spacer()
                                     Text("$\(Int(model.currentOrder.OrderedBaby.TotalPrice))")
                                 }
+                                    
                                 
-                            }.padding().frame(width: UIScreen.main.bounds.width-30).background(Color.black).foregroundColor(Color.white).cornerRadius(10.0)
+                                }.padding().frame(width: UIScreen.main.bounds.width-30).background(Color.black).foregroundColor(Color.white).cornerRadius(10.0).padding(.leading)
+                            coolTitleLight(text: "NEW: Free Shipping In 9-12 Weeks With ChariPrime!")
                     
                     Spacer()
                                 Divider().padding()
@@ -78,7 +98,7 @@ struct OrderOverviewView: View {
                                 Spacer()
                                 Button(action: {
                                     withAnimation {
-                                        model.currentOrderView = "Internal"
+                                        model.currentOrderView = "Accessory"
                                     }
                                 }){
                                     Image(systemName: "arrow.left").font(.system(size: 24, weight: .light))
@@ -89,12 +109,12 @@ struct OrderOverviewView: View {
                             HStack {
                                 Spacer()
                                 Button(action: {
-                                    withAnimation {
+
                                         model.page = "home"
                                         model.currentOrderView = "Preview"
                                         model.allOrders.append(model.currentOrder)
                                         model.currentOrder = InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "Error"), IQ: 0, EyeColor: .ordering, SkinColor: .ordering, Height: 0, Thiccnes: 0, Traits: [], TotalPrice: 0, ProjectedIncome: 0), Financing: .ordering, Status: .ordering, AdditionalAccessories: [])
-                                    }
+                                    
                                 }){
                                     Text("Order").font(.system(size: 18, weight: .light)).padding()
                                     Image(systemName: "arrow.right").font(.system(size: 24, weight: .light))
@@ -110,7 +130,32 @@ struct OrderOverviewView: View {
             }
         }
     }
-
+struct SelectionBoxPayment: View {
+    @ObservedObject var model: ViewModel
+    @Binding var financingOptions: Array<(InfoModel.Financing, Color, Bool)>
+    var optionIndex: Int
+    
+    var body: some View {
+        VStack{
+            if financingOptions[optionIndex].2 {
+                Text(financingOptions[optionIndex].0.rawValue.uppercased()).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(financingOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(financingOptions[optionIndex].1, lineWidth: 1)).transition(.opacity)
+            }
+            else {
+                Text(financingOptions[optionIndex].0.rawValue.uppercased()).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1)).transition(.opacity)
+            }
+            
+        }.onTapGesture {
+            for i in 0..<financingOptions.count {
+                financingOptions[i].2 = false
+                model.currentOrder.Financing = financingOptions[optionIndex].0
+            }
+            withAnimation {
+                financingOptions[optionIndex].2 = true
+            }
+            
+        }
+    }
+}
 
 struct OrderOverviewView_Previews: PreviewProvider {
     @Namespace static var placeholder

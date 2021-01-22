@@ -79,7 +79,7 @@ struct InfoModel{
     }
     
     enum Financing: String {
-        case loan, credit, debit, cash, ordering
+        case loan, credit, debit, cash, ordering, crypto
     }
     
     enum Status: String {

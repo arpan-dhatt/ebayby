@@ -84,7 +84,7 @@ struct OrderInternalView: View {
                         Spacer()
                         Button(action: {
                             withAnimation {
-                                model.currentOrderView = "Overview"
+                                model.currentOrderView = "Accessory"
                             }
                         }){
                             Text("Next").font(.system(size: 18, weight: .light)).padding()

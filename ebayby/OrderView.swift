@@ -21,6 +21,9 @@ struct OrderView: View {
         if model.currentOrderView == "Internal"{
             OrderInternalView(model: model, orderspace: orderspace)
         }
+        if model.currentOrderView == "Accessory"{
+            OrderAccessoryView(model: model)
+        }
         if model.currentOrderView == "Overview"{
             OrderOverviewView(model: model, orderspace: orderspace)
         }
