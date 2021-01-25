@@ -186,11 +186,11 @@ struct ArticlePreviewView: View {
                 
                 VStack{
                     HStack {
-                        Text(article.Subtitle).font(.subheadline).fontWeight(.bold)
+                        Text(article.Subtitle).font(.subheadline).fontWeight(.bold).foregroundColor(article.ForegroundColor)
                         Spacer()
                     }
                     HStack {
-                        Text(article.Title).font(.system(size: 38, weight: .bold))
+                        Text(article.Title).font(.system(size: 38, weight: .bold)).foregroundColor(article.ForegroundColor)
                         Spacer()
                     }
                     Spacer()
@@ -199,7 +199,7 @@ struct ArticlePreviewView: View {
                 showArticle.toggle()
             }
         }.cornerRadius(10.0).foregroundColor(.white).sheet(isPresented: $showArticle, content: {
-            ArticleSheetView(showSheetView: $showArticle, title: article.Title, image: article.Image, subtitle: article.Subtitle, text: article.Subtitle)
+            ArticleSheetView(showSheetView: $showArticle, title: article.Title, image: article.Image, subtitle: article.Subtitle, text: article.Description)
         }).contentShape(Rectangle()).onTapGesture {
             showArticle.toggle()
         }

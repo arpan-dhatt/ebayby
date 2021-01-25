@@ -51,19 +51,15 @@ class ViewModel: ObservableObject {
         .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology")
     ]
     @Published var FeaturedArticles: Array<InfoModel.Article> = [
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-    ]
-    @Published var ParentingTips: Array<InfoModel.Article> = [
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-    ]
-    @Published var TopTens: Array<InfoModel.Article> = [
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
-        .init(Title: "Hello You", Image: UIImage(named: "Donlad")!, Subtitle: "How Goes It?", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k"),
+        .init(Title: "Make a Healthy Baby with One Simple Trick!", Image: UIImage(named: "article1")!, Subtitle: "Order it from us! Don’t risk it on your own!", Description: """
+A lot of stuff can go wrong when making a baby and parents have to live with those consequences their whole lives. If your baby is born with physical defects they can be bullied at school. If your baby is born with mental defects, they will never reach their full potential. There’s a simple way to prevent any of these things from happening, and that’s by making a baby through our platform.
+
+We offer more than just safety and assurance, we offer a full suite of customization for your child. At the tap of a screen, you can assure yourself that your child won’t be afflicted with genetic disorders. You can assure yourself the baby you’ll get is the one you want.
+
+There are many options to choose from, be it eye color, skin color, height, thiccness, and more. We offer even more advanced options such as IQ. We even go a step further and offer our famed ChariCare+ to replace your baby in case of any issues. You can also select accessories for your child to quick-start their development.
+""", ForegroundColor: Color.black),
+        .init(Title: "A Story of Success", Image: UIImage(named: "article2")!, Subtitle: "See how John succeeded when others thought he couldn’t, but we did.", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k", ForegroundColor: Color.black),
+        .init(Title: "Perils of Procreation", Image: UIImage(named: "article3")!, Subtitle: "There is no greater pain than to see your child suffer", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k", ForegroundColor: Color.white),
     ]
     
     //Transistion Variables
@@ -73,9 +69,6 @@ class ViewModel: ObservableObject {
     @Published var currentOrder: InfoModel.Order = InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "Error"), IQ: 80, EyeColor: .ordering, SkinColor: .ordering, Height: 150, Thiccnes: 0, Traits: [], TotalPrice: 0, ProjectedIncome: 0), Financing: .ordering, Status: .ordering, AdditionalAccessories: [])
     @Published var currentBase: InfoModel.BabyBase = InfoModel.BabyBase.init(NameOfCeleb: "Error", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 0, Description: "error")
     @Published var allOrders: Array<InfoModel.Order> = [
-        InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .cash, Status: .delivery, AdditionalAccessories: []),
-        InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan2", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0.1"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .credit, Status: .paid, AdditionalAccessories: []),
-        InfoModel.Order.init(OrderedBaby: .init(Base: .init(NameOfCeleb: "Stephan3", ImageOfCeleb: UIImage(named: "Donlad")!, BasePrice: 10, Description: "Rank 0.01"), IQ: 140, EyeColor: .blue, SkinColor: .brown, Height: 150, Thiccnes: 50, Traits: [], TotalPrice: 100000, ProjectedIncome: 100000), Financing: .loan, Status: .ordering, AdditionalAccessories: [])
     ]
     
     //colors
@@ -88,6 +81,6 @@ class ViewModel: ObservableObject {
     ]
     
     //User
-    @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", SocialCredit: 1, Location: "Dallas", Bio: "El Presidente", ProfilePicture: UIImage(named: "Donlad")!, BabiesInCart: [], BabiesOrdered: [])
+    @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", SocialCredit: 1, Location: "Dallas", Bio: "Hello! My name is Rishik and I love doing debate. I was recently deferred from Yale.", ProfilePicture: UIImage(named: "Donlad")!, BabiesInCart: [], BabiesOrdered: [])
     
 }

@@ -22,6 +22,7 @@ struct InfoModel{
         var Image: UIImage
         var Subtitle: String
         var Description: String
+        var ForegroundColor: Color
         var id = UUID()
     }
     struct Accessory{

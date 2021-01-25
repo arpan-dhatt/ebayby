@@ -47,10 +47,8 @@ struct OrderAccessoryView: View {
                 ScrollView(.horizontal){
                     HStack{
                         accessoryCard(model: self.model, name: "Flexy Bag", description: "Start Life Off in Style", image: UIImage(named: "divine")!, price: 100000, isSelected: $Accessory1).padding()
-                        accessoryCard(model: self.model, name: "Flexy Bag", description: "Start Life Off in Style", image: UIImage(named: "divine")!, price: 100000, isSelected: $Accessory1).padding()
-                        accessoryCard(model: self.model, name: "Flexy Bag", description: "Start Life Off in Style", image: UIImage(named: "divine")!, price: 100000, isSelected: $Accessory1).padding()
-                        accessoryCard(model: self.model, name: "Flexy Bag", description: "Start Life Off in Style", image: UIImage(named: "divine")!, price: 100000, isSelected: $Accessory1).padding()
-                        accessoryCard(model: self.model, name: "Flexy Bag", description: "Start Life Off in Style", image: UIImage(named: "divine")!, price: 100000, isSelected: $Accessory1).padding()
+                        accessoryCard(model: self.model, name: "Self-cleaning Bib", description: "No mess for you to clean", image: UIImage(named: "divine")!, price: 100000, isSelected: $Accessory1).padding()
+                        accessoryCard(model: self.model, name: "Pacific Pacifier", description: "Calm as the Pacific ocean", image: UIImage(named: "divine")!, price: 100000, isSelected: $Accessory1).padding()
 
                     }
                 }
@@ -105,9 +103,8 @@ struct accessoryCard: View {
     
     var body: some View{
         VStack{
-            Image(uiImage: image).resizable().frame(width:175, height:150).aspectRatio(contentMode: .fit)
 
-                Text(name).font(.headline)
+            Text(name).font(.headline)
             Text(description).font(.subheadline)
             Text("$"+String(price)+"+").padding([.bottom]).font(.title2)
             

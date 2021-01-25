@@ -57,7 +57,7 @@ struct ProfileView: View {
             Spacer()
             HStack {
                 Button("About Us", action: { self.showAboutUsSheetView.toggle() }).font(.caption).sheet(isPresented: $showAboutUsSheetView, content: {
-                    DocumentSheetView(showSheetView: $showAboutUsSheetView, title: "About Us", text: "lalalaa")
+                    aboutUsContent(showSheetView: $showAboutUsSheetView)
                 })
                 Text("•")
                 Button("Privacy Policy", action: { self.showPrivacyPolicySheetView.toggle() }).font(.caption).sheet(isPresented: $showPrivacyPolicySheetView, content: {
@@ -144,6 +144,35 @@ struct tosContent: View {
             }
         }
     }
+}
+
+struct aboutUsContent: View {
+    @Binding var showSheetView: Bool
+    
+    var body: some View{
+        ScrollView(.vertical) {
+            VStack {
+                coolTitle(text: "About Us", image: "person.icloud.fill")
+                
+                VStack {
+                    coolTitleLight(text: "Vivek Chari")
+                    Text("A true visionary who discovered the various genetic modification techniques we now use today. His brain has no equal.").padding()
+                }
+                
+                VStack {
+                    coolTitleLight(text: "Arpan Dhatt")
+                    Text("Just an ordinary guy doing ordinary things. A true poglord of the seven seas.").padding()
+                }
+                
+                VStack {
+                    coolTitleLight(text: "Saaketh Chennaighari")
+                    Text("Saaketh has no greater strength than convincing others of anything he wishes them. Look at his hair and brows and fall to your knees, and join those who rip out their hearts for him.").padding()
+                }
+                Spacer()
+            }
+        }
+    }
+
 }
 
 struct ProfileView_Previews: PreviewProvider {

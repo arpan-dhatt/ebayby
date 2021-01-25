@@ -27,25 +27,9 @@ struct OrderPortal: View {
                     }
                     else{
                         VStack{
-                            coolTitleLight(text: "Ordering")
-                            ForEach(model.allOrders, id: \.id){ order in
-                                if order.Status == .delivery {
-                                    deliveryCard(model: self.model, card:order).padding().shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                }
-                            }
-                        }
-                        VStack{
                             coolTitleLight(text: "In Transit")
                             ForEach(model.allOrders, id: \.id){ order in
                                 if order.Status == .ordering {
-                                    deliveryCard(model: self.model, card:order).padding().shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                }
-                            }
-                        }
-                        VStack{
-                            coolTitleLight(text: "Delivered")
-                            ForEach(model.allOrders, id: \.id){ order in
-                                if order.Status == .paid || order.Status == .partiallyPaid {
                                     deliveryCard(model: self.model, card:order).padding().shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                                 }
                             }
