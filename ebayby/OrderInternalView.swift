@@ -12,23 +12,23 @@ struct OrderInternalView: View {
     var orderspace: Namespace.ID
     
     @State var traits = [
-        ("Agile",10000.0, false),
-        ("Dumb",-10000.0, false),
-        ("Quirky",10000.0, false),
-        ("Capitalistic",-100000.0, false),
-        ("Socialistic",100000.0, false),
-        ("Insecure",-10000.0, false),
-        ("Egotistical",-100000.0, false),
-        ("Hardworking",1000000.0, false),
-        ("Resourceful",1000000.0, false),
-        ("Imaginative",1000000.0, false),
-        ("Individualistic",100000.0, false),
-        ("Perfectionist",100000.0, false),
-        ("Hopeful",1000000.0, false),
-        ("Funny",10000000.0, false),
-        ("Sophisticated",1000000.0, false),
-        ("Lazy",-10000.0, false),
-        ("Materialistic",-10000000.0, false)
+        ("Agile",5200.0, false),
+        ("Dumb",-13300.0, false),
+        ("Quirky",16500.0, false),
+        ("Capitalistic",-132000.0, false),
+        ("Socialistic",165000.0, false),
+        ("Insecure",-16750.0, false),
+        ("Egotistical",-199800.0, false),
+        ("Hardworking",1444050.0, false),
+        ("Resourceful",120500.0, false),
+        ("Imaginative",1500500.0, false),
+        ("Individualistic",656500.0, false),
+        ("Perfectionist",540500.0, false),
+        ("Hopeful",4005000.0, false),
+        ("Funny",9509000.0, false),
+        ("Sophisticated",7545000.0, false),
+        ("Lazy",-50000.0, false),
+        ("Materialistic",-850000.0, false)
     ]
     
     var body: some View {
@@ -108,7 +108,7 @@ struct personalityTraitsBox: View {
         VStack{
             Text(traitOptions[optionsIndex].0)
             Text("$"+String(traitOptions[optionsIndex].1)).font(.caption2)
-        }.padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(color).overlay(RoundedRectangle(cornerRadius:5).stroke(color, lineWidth: 1)).transition(.opacity).onTapGesture {
+        }.padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(color).overlay(RoundedRectangle(cornerRadius:5).stroke(color, lineWidth: 4)).transition(.opacity).onTapGesture {
             withAnimation {
                 traitOptions[optionsIndex].2.toggle()
                 if traitOptions[optionsIndex].2 {

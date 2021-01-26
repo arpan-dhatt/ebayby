@@ -130,6 +130,7 @@ struct OrderOverviewView: View {
             }
         }
     }
+
 struct SelectionBoxPayment: View {
     @ObservedObject var model: ViewModel
     @Binding var financingOptions: Array<(InfoModel.Financing, Color, Bool)>
@@ -138,10 +139,10 @@ struct SelectionBoxPayment: View {
     var body: some View {
         VStack{
             if financingOptions[optionIndex].2 {
-                Text(financingOptions[optionIndex].0.rawValue.uppercased()).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(financingOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(financingOptions[optionIndex].1, lineWidth: 1)).transition(.opacity)
+                Text(financingOptions[optionIndex].0.rawValue.uppercased()).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(financingOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(financingOptions[optionIndex].1, lineWidth: 4)).transition(.opacity)
             }
             else {
-                Text(financingOptions[optionIndex].0.rawValue.uppercased()).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1)).transition(.opacity)
+                Text(financingOptions[optionIndex].0.rawValue.uppercased()).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 4)).transition(.opacity)
             }
             
         }.onTapGesture {

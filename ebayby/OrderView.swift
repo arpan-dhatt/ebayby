@@ -43,7 +43,7 @@ struct OrderPreviewView: View {
                 Image(uiImage: model.currentBase.ImageOfCeleb).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit).clipShape(Circle()).shadow(radius: 10).padding()
                 Text(model.currentBase.NameOfCeleb).font(.largeTitle).matchedGeometryEffect(id: "NameOfCeleb", in: orderspace)
                 Text(model.currentBase.Description).font(.title)
-                Text("$"+String(model.currentBase.BasePrice)+"+").font(.headline).padding()
+                Text("$"+String(model.currentBase.BasePrice)+"k+").font(.headline).padding()
                 Spacer()
                 
                 HStack{
@@ -206,10 +206,10 @@ struct SelectionBox: View {
     var body: some View {
         VStack{
             if eyeOptions[optionIndex].2 {
-                Text(eyeOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(eyeOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(eyeOptions[optionIndex].1, lineWidth: 1)).transition(.opacity)
+                Text(eyeOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(eyeOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(eyeOptions[optionIndex].1, lineWidth: 4)).transition(.opacity)
             }
             else {
-                Text(eyeOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1)).transition(.opacity)
+                Text(eyeOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 4)).transition(.opacity)
             }
             
         }.onTapGesture {
@@ -233,10 +233,10 @@ struct SelectionBoxSkin: View {
     var body: some View {
         VStack{
             if skinOptions[optionIndex].2 {
-                Text(skinOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(skinOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(skinOptions[optionIndex].1, lineWidth: 1)).transition(.opacity)
+                Text(skinOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(skinOptions[optionIndex].1).overlay(RoundedRectangle(cornerRadius:5).stroke(skinOptions[optionIndex].1, lineWidth: 4)).transition(.opacity)
             }
             else {
-                Text(skinOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 1)).transition(.opacity)
+                Text(skinOptions[optionIndex].0.rawValue).padding().frame(width: UIScreen.main.bounds.width-30, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).foregroundColor(Color.gray).overlay(RoundedRectangle(cornerRadius:5).stroke(Color.gray, lineWidth: 4)).transition(.opacity)
             }
             
         }
