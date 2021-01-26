@@ -74,7 +74,7 @@ struct ProfileView: View {
                     Divider()
                     
                     HStack {
-                        Text("Subserviacne Level:")
+                        Text("Subserviance Level:")
                             .font(.caption)
                             .fontWeight(.bold)
                         Text("\(model.user.subserviance)")
