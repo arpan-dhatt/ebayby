@@ -17,34 +17,34 @@ class ViewModel: ObservableObject {
     
     //BabyBase Infortion
     @Published var AllBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 1, Description:"Perfection Taken Physical Form"),
-        .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 1, Description:"Consists of Largely Hispanic Geneology"),
-        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
-        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
-        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
-        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology")
+        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 50, Description:"Perfection Taken Physical Form"),
+        .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 10, Description:"Consists of Largely Hispanic Geneology"),
+        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 40, Description:"The Brain is Strong in This One"),
+        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 5, Description:"Consists of Largely Indian Geneology"),
+        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 5, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 5, Description:"Consists of Largely Japanese Geneology")
     ]
     @Published var DealBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
-        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
-        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 1, Description:"Perfection Taken Physical Form"),
-        .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 1, Description:"Consists of Largely Hispanic Geneology"),
-        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
-        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
+        .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 5, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 5, Description:"Consists of Largely Japanese Geneology"),
+        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 50, Description:"Perfection Taken Physical Form"),
+        .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 10, Description:"Consists of Largely Hispanic Geneology"),
+        .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 40, Description:"The Brain is Strong in This One"),
+        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 5, Description:"Consists of Largely Indian Geneology"),
     ]
     @Published var PricyBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Kim", ImageOfCeleb: UIImage(named: "jong")!, BasePrice: 1, Description:"Descendent of God"),
-        .init(NameOfCeleb: "Musk", ImageOfCeleb: UIImage(named: "musk")!, BasePrice: 1, Description:"Geneology Originating from Mars"),
-        .init(NameOfCeleb: "Joe", ImageOfCeleb: UIImage(named: "whiteboy")!, BasePrice: 1, Description:"Geneology Originating in Western Europe"),
-        .init(NameOfCeleb: "Biden", ImageOfCeleb: UIImage(named: "Biden")!, BasePrice: 1, Description:"Mysterious Geneology of Scranton"),
+        .init(NameOfCeleb: "Kim", ImageOfCeleb: UIImage(named: "jong")!, BasePrice: 100, Description:"Descendent of God"),
+        .init(NameOfCeleb: "Musk", ImageOfCeleb: UIImage(named: "musk")!, BasePrice: 120, Description:"Geneology Originating from Mars"),
+        .init(NameOfCeleb: "Joe", ImageOfCeleb: UIImage(named: "whiteboy")!, BasePrice: 40, Description:"Geneology Originating in Western Europe"),
+        .init(NameOfCeleb: "Biden", ImageOfCeleb: UIImage(named: "Biden")!, BasePrice: 120, Description:"Mysterious Geneology of Scranton"),
         .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
         .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
         .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
         .init(NameOfCeleb: "Emma", ImageOfCeleb: UIImage(named: "japanesegirl")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology")
     ]
     @Published var CheapBases: Array<InfoModel.BabyBase>  = [
-        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 1, Description:"Consists of Largely Indian Geneology"),
-        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 1, Description:"Perfection Taken Physical Form"),
+        .init(NameOfCeleb: "Nandu", ImageOfCeleb: UIImage(named: "indian")!, BasePrice: 5, Description:"Consists of Largely Indian Geneology"),
+        .init(NameOfCeleb: "Vivek", ImageOfCeleb: UIImage(named: "divine")!, BasePrice: 50, Description:"Perfection Taken Physical Form"),
         .init(NameOfCeleb: "Isabel", ImageOfCeleb: UIImage(named: "hispanic")!, BasePrice: 1, Description:"Consists of Largely Hispanic Geneology"),
         .init(NameOfCeleb: "Megamind", ImageOfCeleb: UIImage(named: "megamind")!, BasePrice: 1, Description:"The Brain is Strong in This One"),
         .init(NameOfCeleb: "Hubert", ImageOfCeleb: UIImage(named: "japaneseboy")!, BasePrice: 1, Description:"Consists of Largely Japanese Geneology"),
@@ -57,7 +57,7 @@ A lot of stuff can go wrong when making a baby and parents have to live with tho
 We offer more than just safety and assurance, we offer a full suite of customization for your child. At the tap of a screen, you can assure yourself that your child won’t be afflicted with genetic disorders. You can assure yourself the baby you’ll get is the one you want.
 
 There are many options to choose from, be it eye color, skin color, height, thiccness, and more. We offer even more advanced options such as IQ. We even go a step further and offer our famed ChariCare+ to replace your baby in case of any issues. You can also select accessories for your child to quick-start their development.
-""", ForegroundColor: Color.black),
+""", ForegroundColor: Color.white),
         .init(Title: "A Story of Success", Image: UIImage(named: "article2")!, Subtitle: "See how John succeeded when others thought he couldn’t, but we did.", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k", ForegroundColor: Color.black),
         .init(Title: "Perils of Procreation", Image: UIImage(named: "article3")!, Subtitle: "There is no greater pain than to see your child suffer", Description: "akldafda;fl  akdf   akldfj a lkfda ok adlkf a sadf lkasdj fa  lksad fkl;as alk;dfj alklask;d lkasd jflasd lka;sdf as f;alsd fas jl;aslk ffas; l as;ldf jaof lsa skad l;as dflkas ;lla fioejgahsdklgf;hyauoe aksdfj iosajf kasldk oea; sadfo kaoejdf aksldfu waeo ksdfaj ioasp alk jdsafik n lkds klfasjd k", ForegroundColor: Color.white),
     ]
