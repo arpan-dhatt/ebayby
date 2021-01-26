@@ -17,7 +17,7 @@ struct ProfileView: View {
     var body: some View {
         VStack {
             VStack{
-            VStack {
+            ScrollView{
                 VStack {
                     Text("Hello")
                         .font(.headline)
@@ -108,7 +108,7 @@ struct ProfileView: View {
                         .font(.caption)
                         .padding(.leading)
                         .multilineTextAlignment(.leading)
-                    Spacer()
+                    
                 }
                 Divider()
             }
