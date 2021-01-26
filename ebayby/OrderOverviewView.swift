@@ -153,6 +153,7 @@ struct SelectionBoxPayment: View {
             withAnimation {
                 financingOptions[optionIndex].2 = true
             }
+            model.currentOrder.Status = .delivery
             
         }
     }
