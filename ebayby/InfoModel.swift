@@ -60,6 +60,12 @@ struct InfoModel{
         var BabiesInCart: [Baby]
         var BabiesOrdered: [Order]
         var id = UUID()
+        var age: String
+        var job: String
+        var socialClass: String
+        var subserviance: String
+        var intelligence: String
+        
     }
     
     enum EyeColor: String {

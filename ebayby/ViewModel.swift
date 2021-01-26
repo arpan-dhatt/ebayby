@@ -81,6 +81,6 @@ There are many options to choose from, be it eye color, skin color, height, thic
     ]
     
     //User
-    @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", SocialCredit: 1, Location: "Dallas", Bio: "Hello! My name is Rishik and I love doing debate. I was recently deferred from Yale.", ProfilePicture: UIImage(named: "Donlad")!, BabiesInCart: [], BabiesOrdered: [])
+    @Published var user: InfoModel.User = InfoModel.User.init(name: "Rishik", SocialCredit: 1, Location: "Washington D.C", Bio: "After becoming a neo-natel neurosurgon, Rishik grew bored of such a simple job, and set his sights higher. He launched his political career with ruthless eficinecy eliminating the competion, running unoppossed in all of his elections. A man who started off as the first Indian-American senetor was quickly able consolidate power with the help of the friendly corporations that drive the nations corporations. Today, after passing numerous consitutional amendments that further improved democracy by strengthening the power of the executive branch and by eliminating pesky term-limits. Rishik is truly a man of the people who matter.", ProfilePicture: UIImage(named: "Donlad")!, BabiesInCart: [], BabiesOrdered: [], age: "55", job: "President (NOT Dicatator)", socialClass: "Ultra-Wealthy", subserviance: "Very High", intelligence: "Maximum")
     
 }

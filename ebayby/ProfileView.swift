@@ -27,6 +27,8 @@ struct ProfileView: View {
                 }
                 Text("Social Credit Score: \(Int(model.user.SocialCredit)) out of 100").font(.headline)
                 Image(uiImage: model.user.ProfilePicture).resizable().frame(width:250, height: 250).aspectRatio(contentMode: .fit).clipShape(Circle()).shadow(radius: 10).padding()
+                VStack{
+                    VStack{
                 HStack {
                     Text("Location:")
                         .font(.caption)
@@ -35,9 +37,65 @@ struct ProfileView: View {
                     Text("\(model.user.Location)")
                         .font(.caption)
                     Spacer()
+                }.padding(.leading)
+                Divider()
+                HStack {
+                    Text("Age:")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                    Text("\(model.user.age)")
+                        .font(.caption)
+                    Spacer()
                 }
                 .padding(.leading)
+                    
                 Divider()
+                    }
+                    HStack {
+                        Text("Occupation:")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                        Text("\(model.user.job)")
+                            .font(.caption)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    Divider()
+
+                    HStack {
+                        Text("Social Class:")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                        Text("\(model.user.socialClass)")
+                            .font(.caption)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    Divider()
+                    
+                    HStack {
+                        Text("Subserviacne Level:")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                        Text("\(model.user.subserviance)")
+                            .font(.caption)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    Divider()
+                    
+                    HStack {
+                        Text("Intelligence:")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                        Text("\(model.user.intelligence)")
+                            .font(.caption)
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    Divider()
+
+                }
                 HStack {
                     Text("Bio:")
                         .font(.caption)
